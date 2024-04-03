@@ -1,0 +1,149 @@
+{
+  "appContainer": {
+    "display": "flex",
+    "flexDirection": "column",
+    "minHeight": "100vh",
+    "fontFamily": "Nunito Sans, sans-serif",
+    "backgroundColor": "#f7f7f7"
+  },
+  "header": {
+    "backgroundImage": "linear-gradient(to right, #4b6cb7, #182848)",
+    "color": "white",
+    "padding": "0 50px",
+    "fontSize": "16px",
+    "fontWeight": "normal",
+    "display": "flex",
+    "alignItems": "center",
+    "height": "80px",
+    "boxShadow": "0 2px 4px rgba(0,0,0,.1)"
+  },
+  "logo": {
+    "fontWeight": "bold",
+    "fontSize": "24px",
+    "color": "white",
+    "flex": "none"
+  },
+  "menu": {
+    "display": "flex",
+    "flexGrow": "1",
+    "justifyContent": "center",
+    "listStyle": "none",
+    "margin": "0",
+    "padding": "0",
+    "height": "100%"
+  },
+  "menuItem": {
+    "color": "white",
+    "textDecoration": "none",
+    "display": "flex",
+    "alignItems": "center",
+    "height": "100%",
+    "padding": "0 15px"
+  },
+  "search": {
+    "margin": "0 20px",
+    "flex": "none"
+  },
+  "searchInput": {
+    "border": "1px solid #ccc",
+    "borderRadius": "4px",
+    "padding": "8px 16px",
+    "outline": "none"
+  },
+  "login": {
+    "color": "#61dafb",
+    "background": "none",
+    "border": "none",
+    "padding": "8px 16px",
+    "textDecoration": "none",
+    "cursor": "pointer"
+  },
+  "helpCenter": {
+    "color": "#61dafb",
+    "background": "none",
+    "border": "none",
+    "padding": "8px 16px",
+    "textDecoration": "none",
+    "cursor": "pointer"
+  },
+
+  "mainLayout": {
+    "display": "flex",
+    "flexDirection": "row",
+    "flexGrow": 1
+  },
+  "sidebar": {
+    "flex": "0 0 240px",
+    "backgroundColor": "#333",
+    "color": "white",
+    "padding": "20px",
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "flex-start",
+    "overflowY": "auto"
+  },
+  "sidebarItem": {
+    "padding": "10px",
+    "margin": "5px 0",
+    "cursor": "pointer",
+    "textDecoration": "none",
+    "color": "#fff",
+    "display": "block",
+    "backgroundColor": "#404040",
+    "border": "none",
+    "textAlign": "left",
+    "width": "100%",
+    "borderRadius": "4px",
+    "transition": "background-color 0.3s"
+  },
+  "sidebarItemActive": {
+    "backgroundColor": "#555",
+    "fontWeight": "bold"
+  },
+  "mainContent": {
+    "display": "flex",
+    "flexGrow": 1,
+    "padding": "20px",
+    "backgroundColor": "#fff",
+    "borderLeft": "1px solid #ccc",
+    "overflow": "hidden"
+  },
+  "APIDescription": {
+    "flex": "2",
+    "padding": "20px",
+    "marginRight": "20px",
+    "backgroundColor": "#f9f9f9",
+    "borderRadius": "8px",
+    "boxShadow": "0 2px 4px rgba(0,0,0,0.1)"
+  },
+  "testArea": {
+    "flex": "1",
+    "padding": "20px",
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "flex-start",
+    "justifyContent": "center",
+    "backgroundColor": "#f9f9f9",
+    "borderRadius": "8px",
+    "boxShadow": "0 2px 4px rgba(0,0,0,0.1)"
+  },
+  "testButton": {
+    "marginTop": "10px",
+    "color": "white",
+    "backgroundColor": "#2085ec",
+    "padding": "10px 15px",
+    "border": "none",
+    "borderRadius": "4px",
+    "cursor": "pointer",
+    "fontSize": "16px",
+    "transition": "background-color 0.3s"
+  },
+  "statusIndicator": {
+    "marginTop": "10px",
+    "width": "20px",
+    "height": "20px",
+    "borderRadius": "50%",
+    "display": "inline-block",
+    "border": "1px solid #000"
+  }
+}
