@@ -1,0 +1,48 @@
+.authorization-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.authorization-header {
+  font-weight: bold;
+  margin-bottom: 16px;
+  padding: 10px 0px;
+}
+
+.ant-input,
+.ant-btn-primary {
+  border-radius: 4px;
+}
+
+.ant-tabs {
+  margin-bottom: 16px;
+}
+
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: #fff;
+}
+
+.ant-btn-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.ant-input-group-addon + .ant-input-affix-wrapper,
+.ant-input-group-addon + .ant-input {
+  border-left-width: 0;
+}
+
+.authorization-header .ant-input-group-compact > *:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.authorization-header .ant-input-group-compact > *:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}

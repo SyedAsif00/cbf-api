@@ -1,0 +1,31 @@
+.code-block-container {
+  color: #f8f8f2;
+  font-family: "Consolas", "Monaco", "Lucida Console", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 4px;
+  margin: 10px 0;
+  position: relative;
+}
+
+.code-block-header {
+  background-color: #1e1e1e;
+  color: #dcdcdc;
+  padding: 6px 12px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.code-block-content {
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+.copy-code-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #dcdcdc;
+  cursor: pointer;
+}
