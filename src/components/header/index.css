@@ -1,12 +1,9 @@
-/* Header.css */
-
 .header {
-  /* background-image: linear-gradient(to right, #4bb76682, #407403); */
-  background-color: rgb(1, 36, 1);
+  background-image: linear-gradient(to right, #79d28f82, #10c728);
+  background-color: rgb(1, 36, 1); /* Fallback for older browsers */
   color: white;
   padding: 0 50px;
   font-size: 16px;
-  font-weight: normal;
   display: flex;
   align-items: center;
   height: 80px;
@@ -18,7 +15,7 @@
   font-weight: bold;
   font-size: 24px;
   color: white;
-  flex: none;
+  flex-shrink: 0;
 }
 
 .menu {
@@ -38,16 +35,12 @@
   padding: 0 15px;
 }
 
-.search {
-  margin: 0 20px;
-  flex: none;
-}
-
 .searchInput {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 8px 16px;
   outline: none;
+  margin-left: auto; /* Pushes the search input to the right */
 }
 
 .login,
@@ -57,5 +50,11 @@
   border: none;
   padding: 8px 16px;
   text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.hamburger-menu {
+  margin-left: auto;
   cursor: pointer;
 }

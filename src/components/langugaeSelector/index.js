@@ -32,8 +32,8 @@ const LanguageCodeBlock = ({ currentApiDetails }) => {
         tabList={tabList}
       />
       <div className="code-block-header">
-        <span>API REQUEST</span>
-        <div className="copy-code-icon">
+        <div className="header-title-and-button">
+          <span>API REQUEST</span>
           <TickButton
             tickColor="green"
             icon={<CopyOutlined style={{ color: "darkgrey" }} />}

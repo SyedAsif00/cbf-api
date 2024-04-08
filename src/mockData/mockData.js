@@ -1,4 +1,13 @@
-// src/mockData/mockCodeSnippets.js
+export const headerContent = {
+  logoText: "SustraxAPI",
+  menuItems: [
+    { name: "Guides", link: "#guides" },
+    { name: "API Reference", link: "#api-reference" },
+  ],
+  searchPlaceholder: "Search",
+  loginText: "Log in",
+  helpCenterText: "Help center",
+};
 
 export const mockCodeSnippets = {
   Python: (details) => `import requests

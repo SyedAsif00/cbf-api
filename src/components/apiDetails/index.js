@@ -4,11 +4,11 @@ import { Select } from "antd";
 
 import ApiDataContext from "../../context/ApiDataContext";
 import "./index.css";
-
+import { useResponsive } from "../../customHooks/responsive";
 const { Option } = Select;
-
 const ApiDetails = () => {
   const { currentApiDetails } = useContext(ApiDataContext);
+  const { isMobile } = useResponsive();
 
   if (!currentApiDetails) {
     return <div>Select an endpoint to see the details</div>;
