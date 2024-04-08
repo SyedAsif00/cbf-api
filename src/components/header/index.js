@@ -4,16 +4,18 @@ import { useResponsive } from "../../customHooks/responsive";
 import { MenuOutlined } from "@ant-design/icons";
 import "./index.css";
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
   const { isMobile } = useResponsive();
+
   return (
     <header className="header">
       <div className="logo">{headerContent.logoText}</div>
-      {isMobile ? (
-        <div className="hamburger-menu">
+      {isMobile && (
+        <div className="hamburger-menu" onClick={toggleSidebar}>
           <MenuOutlined style={{ fontSize: "24px" }} />
         </div>
-      ) : (
+      )}
+      {!isMobile && (
         <>
           <nav className="menu">
             {headerContent.menuItems.map((item) => (

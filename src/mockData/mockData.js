@@ -92,7 +92,7 @@ export const apiData = [
     method: "GET",
     endpoint: "calculate-fuel",
     description:
-      "Calculates fuel emissions based on distance and vehicle type. Not applicable for electric or hybrid vehicles. Returns total CO2 emissions in kilograms (kg) as '200 OK'.      ",
+      "Calculates fuel emissions based on distance and vehicle type. Not applicable for electric or hybrid vehicles. Returns total CO2 emissions in kilograms (kg) as '200 OK'.",
     baseUrl: "https://{{region}}-api.abcdef.com/v2",
     callRate: "Medium call rate",
     fields: [

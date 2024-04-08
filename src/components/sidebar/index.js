@@ -20,7 +20,7 @@ const Sidebar = () => {
               className="link"
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "#e1e4e8";
-                e.target.style.color = "#5c8b27";
+                e.target.style.color = "#0056b3";
               }}
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = "#fff";

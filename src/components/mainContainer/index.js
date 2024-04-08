@@ -7,11 +7,10 @@ const MainContainer = ({ children }) => {
   return (
     <div>
       <Row gutter={16} style={{ padding: "10px 20px" }}>
-        <Col className="gutter-row" xs={24} md={15}>
+        <Col className="gutter-row" xs={24} md={16}>
           <ApiDetails />
-          {children}
         </Col>
-        <Col className="gutter-row" xs={24} md={9}>
+        <Col className="gutter-row" xs={24} md={8}>
           <AuthorizationBlock />
         </Col>
       </Row>

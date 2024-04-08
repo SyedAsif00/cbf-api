@@ -1,12 +1,18 @@
 /* api-details.css */
 .api-details-container {
+  width: 49vw;
+
   background: #ffffff; /* Assuming a light background */
   padding: 20px;
   border-radius: 8px;
   margin: 20px auto; /* Center the container */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
-
+@media (max-width: 768px) {
+  .api-details-container {
+    width: 100%;
+  }
+}
 .api-details-title {
   font-size: 24px;
   font-weight: 600;
@@ -67,18 +73,6 @@
   border: 1px solid #d9d9d9;
   font-size: 14px;
   border-radius: 4px;
-}
-
-.submit-button {
-  background-color: #28a745;
-  color: #fff;
-  font-size: 16px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block; /* Make the button a block to fill container */
-  width: 100%; /* Full-width button */
 }
 
 .submit-button:hover {
