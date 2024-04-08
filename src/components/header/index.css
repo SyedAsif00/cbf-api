@@ -1,7 +1,8 @@
 /* Header.css */
 
 .header {
-  background-image: linear-gradient(to right, #4b6cb7, #182848);
+  /* background-image: linear-gradient(to right, #4bb76682, #407403); */
+  background-color: rgb(1, 36, 1);
   color: white;
   padding: 0 50px;
   font-size: 16px;

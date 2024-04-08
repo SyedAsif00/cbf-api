@@ -4,6 +4,8 @@ import { CopyOutlined } from "@ant-design/icons";
 import { mockCodeSnippets } from "../../mockData/mockData";
 import CustomTabs from "../common/customTabs/CustomTab";
 import "./index.css";
+import TickButton from "../other/TickButton";
+import { copyToClipboard } from "../../js-helper/copy";
 
 const LanguageCodeBlock = ({ currentApiDetails }) => {
   const [activeLanguage, setActiveLanguage] = useState("Python");
@@ -14,10 +16,6 @@ const LanguageCodeBlock = ({ currentApiDetails }) => {
       setCodeSnippet(mockCodeSnippets[activeLanguage](currentApiDetails));
     }
   }, [activeLanguage, currentApiDetails]);
-
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText(codeSnippet).then(() => {});
-  };
 
   const tabList = [
     { title: "Python", key: "Python" },
@@ -35,7 +33,15 @@ const LanguageCodeBlock = ({ currentApiDetails }) => {
       />
       <div className="code-block-header">
         <span>API REQUEST</span>
-        <CopyOutlined className="copy-code-icon" onClick={handleCopyCode} />
+        <div className="copy-code-icon">
+          <TickButton
+            tickColor="green"
+            icon={<CopyOutlined style={{ color: "darkgrey" }} />}
+            onClick={() => {
+              copyToClipboard(codeSnippet, "Code has been copied!");
+            }}
+          />
+        </div>
       </div>
       <Input.TextArea
         className="code-block-content"
