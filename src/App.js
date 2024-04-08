@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ApiDataProvider } from "./context/ApiDataContext";
 import Header from "./components/header";
@@ -8,9 +8,6 @@ import MainLayout from "./components/mainLayout";
 import "./App.css";
 
 const App = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {};
   return (
     <Router>
       <ApiDataProvider>

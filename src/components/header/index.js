@@ -1,21 +1,23 @@
 import React from "react";
 import { headerContent } from "../../mockData/mockData";
 import { useResponsive } from "../../customHooks/responsive";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons"; // If you're using Ant Design
 import "./index.css";
 
-const Header = ({ toggleSidebar }) => {
+const Header = () => {
   const { isMobile } = useResponsive();
 
   return (
     <header className="header">
       <div className="logo">{headerContent.logoText}</div>
-      {isMobile && (
-        <div className="hamburger-menu" onClick={toggleSidebar}>
+
+      {isMobile ? (
+        // For mobile, display a hamburger menu icon
+        <div className="hamburger-menu">
           <MenuOutlined style={{ fontSize: "24px" }} />
         </div>
-      )}
-      {!isMobile && (
+      ) : (
+        // For larger screens, display the full menu and other elements
         <>
           <nav className="menu">
             {headerContent.menuItems.map((item) => (

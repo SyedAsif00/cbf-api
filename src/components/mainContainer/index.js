@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import ApiDetails from "../apiDetails";
 import AuthorizationBlock from "../authorizationBlock";
 
-const MainContainer = ({ children }) => {
+const MainContainer = () => {
   return (
     <div>
       <Row gutter={16} style={{ padding: "10px 20px" }}>
