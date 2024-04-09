@@ -6,20 +6,25 @@
   height: 100vh;
   padding: 20px;
 }
+@media (max-width: 768px) {
+  .container {
+    /* display: none; */
+  }
+}
 
 .link {
   display: block;
   padding: 10px 15px;
   margin-bottom: 5px;
   text-decoration: none;
-  color: #333;
+  color: #3a9012;
   background-color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .link:hover {
-  background-color: #e1e4e8;
-  color: #9fa5ac;
+  background-color: #eaeced;
+  color: #000000;
 }
 
 .sidebar-item .link.activeLink {

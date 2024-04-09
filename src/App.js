@@ -1,5 +1,4 @@
-// App.js
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ApiDataProvider } from "./context/ApiDataContext";
 import Header from "./components/header";
@@ -8,13 +7,18 @@ import MainLayout from "./components/mainLayout";
 import "./App.css";
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(true);
+  };
   return (
     <Router>
       <ApiDataProvider>
         <div>
-          <Header />
+          <Header isOpen={isOpen} />
           <div style={{ display: "flex" }}>
-            <Sidebar />
+            <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
             <MainLayout />
           </div>
         </div>

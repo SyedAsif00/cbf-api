@@ -5,15 +5,19 @@ const ApiDataContext = createContext();
 export const useApiData = () => useContext(ApiDataContext);
 
 export const ApiDataProvider = ({ children }) => {
-  const [currentApiDetails, setCurrentApiDetails] = useState(apiData[0]);
+  const [currentApiDetails, setCurrentApiDetails] = useState();
+  const [selectedApiEndpoint, setSelectedApiEndpoint] = useState("");
   const [apis, setApis] = useState(apiData);
   const setApiDetails = (endpoint) => {
     const details = apiData.find((api) => api.endpoint === endpoint);
     setCurrentApiDetails(details);
+    setSelectedApiEndpoint(endpoint);
   };
 
   return (
-    <ApiDataContext.Provider value={{ currentApiDetails, setApiDetails, apis }}>
+    <ApiDataContext.Provider
+      value={{ currentApiDetails, setApiDetails, apis, selectedApiEndpoint }}
+    >
       {children}
     </ApiDataContext.Provider>
   );

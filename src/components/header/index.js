@@ -1,10 +1,10 @@
 import React from "react";
 import { headerContent } from "../../mockData/mockData";
 import { useResponsive } from "../../customHooks/responsive";
-import { MenuOutlined } from "@ant-design/icons"; // If you're using Ant Design
+import { MenuOutlined } from "@ant-design/icons";
 import "./index.css";
 
-const Header = () => {
+const Header = ({ isOpen }) => {
   const { isMobile } = useResponsive();
 
   return (
@@ -12,12 +12,10 @@ const Header = () => {
       <div className="logo">{headerContent.logoText}</div>
 
       {isMobile ? (
-        // For mobile, display a hamburger menu icon
         <div className="hamburger-menu">
           <MenuOutlined style={{ fontSize: "24px" }} />
         </div>
       ) : (
-        // For larger screens, display the full menu and other elements
         <>
           <nav className="menu">
             {headerContent.menuItems.map((item) => (

@@ -16,6 +16,10 @@ const AuthorizationBlock = () => {
     setActiveLanguage(key);
   };
 
+  if (!currentApiDetails) {
+    return <div>Select an endpoint to see the details</div>;
+  }
+
   return (
     <div className="authorization-container">
       <div className="authorization-header">

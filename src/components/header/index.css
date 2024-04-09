@@ -1,5 +1,5 @@
 .header {
-  background-image: linear-gradient(to right, #79d28f82, #10c728);
+  background-image: linear-gradient(to right, #79d28f82, #08ab1e);
   background-color: rgb(1, 36, 1); /* Fallback for older browsers */
   color: white;
   padding: 0 50px;
@@ -45,7 +45,7 @@
 
 .login,
 .helpCenter {
-  color: #61dafb;
+  color: white;
   background: none;
   border: none;
   padding: 8px 16px;

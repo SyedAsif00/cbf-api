@@ -96,12 +96,12 @@ export const apiData = [
     baseUrl: "https://{{region}}-api.abcdef.com/v2",
     callRate: "Medium call rate",
     fields: [
-      {
-        name: "region",
-        type: "string",
-        required: true,
-        placeholder: "e.g., r1, r2 or r3",
-      },
+      // {
+      //   name: "region",
+      //   type: "string",
+      //   required: true,
+      //   placeholder: "e.g., r1, r2 or r3",
+      // },
       {
         name: "id",
         type: "int",
