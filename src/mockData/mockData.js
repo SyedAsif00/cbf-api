@@ -133,4 +133,21 @@ export const apiData = [
       },
     ],
   },
+  {
+    title: "Calculate for Cars",
+    method: "GET",
+    endpoint: "calculate-cars",
+    description:
+      "Estimates electricity usage for appliances. Not suitable for industrial equipment. Returns total kWh consumed as '200 OK'.",
+    baseUrl: "https://{{region}}-api.abcdef.com/v2",
+    callRate: "Medium call rate",
+    fields: [
+      {
+        name: "id",
+        type: "int",
+        required: true,
+        placeholder: "The ID of the address book",
+      },
+    ],
+  },
 ];

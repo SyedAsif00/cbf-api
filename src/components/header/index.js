@@ -24,11 +24,7 @@ const Header = ({ isOpen }) => {
               </a>
             ))}
           </nav>
-          <input
-            type="text"
-            className="searchInput"
-            placeholder={headerContent.searchPlaceholder}
-          />
+
           <a href="#login" className="login">
             {headerContent.loginText}
           </a>
