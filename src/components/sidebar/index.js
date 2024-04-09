@@ -3,8 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useApiData } from "../../context/ApiDataContext";
 import { Input } from "antd";
 import "./index.css";
+import { CloseOutlined } from "@ant-design/icons";
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
   const { apis, setApiDetails, selectedApiEndpoint } = useApiData();
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,8 +39,41 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   if (!selectedApiEndpoint) return;
 
+  if (isOpen)
+    return (
+      <div
+        tabIndex="-1"
+        className={`drawer ${isOpen && "animate"} ${!isOpen && "hidden"} left`}
+      >
+        <div
+          onClick={() => setIsOpen(false)}
+          style={{ position: "absolute", right: 20 }}
+        >
+          <CloseOutlined />
+        </div>
+        <ul style={{ listStyle: "none", marginTop: 30 }} className="list">
+          {filteredApis.map((api) => (
+            <li
+              key={api.endpoint}
+              className={`sidebar-item ${
+                isActive(api.endpoint) ? "activeLink" : ""
+              }`}
+              onClick={() => handleApiClick(api.endpoint)}
+            >
+              <Link
+                to={`/api/${api.endpoint}`}
+                className={`link ${isActive(api.endpoint) ? "activeLink" : ""}`}
+              >
+                {api.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+
   return (
-    <aside className={`container ${!isOpen ? "open" : ""}`}>
+    <aside className={`container`}>
       <Input
         placeholder="jump to..."
         size="small"

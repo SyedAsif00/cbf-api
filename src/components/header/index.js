@@ -4,15 +4,15 @@ import { useResponsive } from "../../customHooks/responsive";
 import { MenuOutlined } from "@ant-design/icons";
 import "./index.css";
 
-const Header = ({ isOpen }) => {
-  const { isMobile } = useResponsive();
+const Header = ({ isOpen, setIsOpen }) => {
+  const { isTablet } = useResponsive();
 
   return (
     <header className="header">
       <div className="logo">{headerContent.logoText}</div>
 
-      {isMobile ? (
-        <div className="hamburger-menu">
+      {isTablet ? (
+        <div className="hamburger-menu" onClick={() => setIsOpen(true)}>
           <MenuOutlined style={{ fontSize: "24px" }} />
         </div>
       ) : (
