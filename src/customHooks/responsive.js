@@ -11,7 +11,6 @@ export function useResponsive() {
   const isMobile = useMediaQuery({ query: breakpoints.mobile });
   const isTablet = useMediaQuery({ query: breakpoints.tablet });
   const isDesktop = useMediaQuery({ query: breakpoints.desktop });
-
   return {
     isMobile,
     isTablet,

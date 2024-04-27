@@ -1,0 +1,80 @@
+/* src/components/profile/ProfilePage.css */
+.profile-card {
+  max-width: 100vw;
+  border-radius: 4px;
+  box-shadow: none;
+  border: none;
+  margin: 0;
+  padding: 24px;
+}
+.profile-dropdown {
+  float: right; /* Align dropdown to the right */
+  margin-bottom: 1rem;
+}
+
+.ant-dropdown-link {
+  color: black;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto; /* Or set a specific width */
+  cursor: pointer;
+}
+
+.ant-dropdown-link:hover {
+  opacity: 0.85; /* Optional: Change opacity on hover */
+}
+
+/* Styling the dropdown menu */
+.ant-menu-item {
+  color: #3f6600; /* This should match the green color from the image */
+  margin: 0;
+}
+
+/* Styling the icons inside the menu */
+.ant-menu-item .anticon {
+  color: #3f6600; /* This should match the green color from the image */
+  margin-right: 8px;
+}
+
+/* Add more styles if needed to match your design requirements */
+
+.profile-title {
+  font-size: 24px;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+/* Remove padding around the Card content */
+.ant-card-body {
+  padding: 0;
+}
+
+/* Style for form input */
+.ant-form-item-label > label {
+  font-weight: 500; /* Set font weight for labels */
+}
+
+/* Style for the Update button */
+.ant-btn-primary {
+  background-color: #4caf50; /* Custom color for the button */
+  border-color: #4caf50; /* Custom border color */
+  /* Full width button */
+  display: block;
+  width: 100%;
+}
+
+/* Optional: You can add media queries to handle responsive layouts */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 16px;
+  }
+
+  .profile-title {
+    font-size: 20px;
+  }
+}

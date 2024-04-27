@@ -58,3 +58,24 @@
   margin-left: auto;
   cursor: pointer;
 }
+
+/* Increase the overall size of the dropdown menu items */
+.header .ant-dropdown-menu {
+  font-size: 16px; /* Adjust font-size as needed */
+}
+
+.header .ant-dropdown-menu-item {
+  padding: 12px 20px; /* Adjust padding to increase size */
+  /* Add any additional styles here */
+}
+
+/* Optionally, you can also adjust the icon size within the dropdown if needed */
+.header .ant-dropdown-menu-item-icon {
+  font-size: 16px; /* Match icon size with font size or as desired */
+  margin-right: 8px; /* Spacing between icon and text */
+}
+
+/* If you want to increase the width of the dropdown menu */
+.header .ant-dropdown-menu {
+  width: 200px; /* Set a specific width or use 'min-width' for a flexible size */
+}

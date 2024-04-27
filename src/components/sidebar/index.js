@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   const handleApiClick = (endpoint) => {
     setApiDetails(endpoint);
-    navigate(`/api/${endpoint}`);
+    navigate(`/dashboard/api/${endpoint}`); // Adjusted for new route structure
   };
 
   const isActive = (endpoint) => location.pathname.endsWith(endpoint);
@@ -36,8 +36,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       api.title.toLowerCase().includes(search) ||
       api.endpoint.toLowerCase().includes(search)
   );
-
-  if (!selectedApiEndpoint) return;
 
   if (isOpen)
     return (
