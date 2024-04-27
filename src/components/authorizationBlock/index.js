@@ -1,24 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Tabs, Input, Button, Row, Col, Typography } from "antd";
+import React, { useState } from "react";
+import { Typography } from "antd";
 import LanguageCodeBlock from "../langugaeSelector";
 import { useApiData } from "../../context/ApiDataContext";
 import { UserAuthInputs, SingleInput } from "../common/formInputs/formInput";
 import styles from "../../styles/styles.contants.json";
-import { onAuthStateChanged, auth, getAuth } from "firebase/auth";
 import "./index.css";
-const { Title, Paragraph, Text } = Typography;
+import { useAuth } from "../../context/AuthContext";
+const { Text } = Typography;
 
 const AuthorizationBlock = () => {
+  const { user } = useAuth();
   const { currentApiDetails } = useApiData();
   const [activeLanguage, setActiveLanguage] = useState("Python");
-  const [user, setUser] = useState(false);
 
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-  }, []);
   const handleTabChange = (key) => {
     setActiveLanguage(key);
   };

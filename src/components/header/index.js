@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useAuth } from "../../context/AuthContext";
 import { headerContent } from "../../mockData/mockData";
 import { useResponsive } from "../../customHooks/responsive";
 import { MenuOutlined, UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { Avatar, Dropdown, Menu, message } from "antd";
+import { Avatar, Dropdown, Menu } from "antd";
+import { handleLogout } from "../../helpers/authHelper";
 import "./index.css";
 
 const Header = ({ isOpen, setIsOpen }) => {
+  const { user } = useAuth();
   const { isTablet } = useResponsive();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  const handleLogout = () => {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        message.success("You have been logged out.");
-        setUser(null);
-      })
-      .catch((error) => {
-        message.error("Failed to log out.");
-      });
-  };
 
   const userMenu = (
     <Menu>
