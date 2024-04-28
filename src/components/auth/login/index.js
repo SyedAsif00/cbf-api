@@ -4,7 +4,7 @@ import { Form, Input, Button, Checkbox, Row, Col, message } from "antd";
 import "./index.css";
 import img1 from "../../../assets/undraw_file_sync_ot38.svg";
 import loginUser from "../../../firebase/auth.firebase";
-
+import texts from "../../../mockData/texts";
 const Login = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -17,7 +17,7 @@ const Login = () => {
       const user = await loginUser(values.username, values.password);
       console.log("User logged in successfully:", user);
       navigate("/dashboard");
-      message.success("login success");
+      message.success(texts.login.onFinishSuccess);
     } catch (error) {
       console.error("Login failed:", error);
       message.error(`Login failed: ${error.message}`);
@@ -27,7 +27,7 @@ const Login = () => {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
-    message.error("Please complete all required fields.");
+    message.error(texts.login.onFinishFailed);
   };
 
   return (
@@ -44,10 +44,9 @@ const Login = () => {
         >
           <Row gutter={24}>
             <Col xs={24} md={12} className="form-column">
-              <h2 className="login-title">Login to sustraxAPI</h2>
+              <h2 className="login-title">{texts.login.loginTitle}</h2>
               <p className="login-description">
-                Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
-                consectetur adipisicing.
+                {texts.login.loginDescription}
               </p>
               <Form
                 form={form}
@@ -61,7 +60,7 @@ const Login = () => {
                 <Form.Item
                   name="username"
                   rules={[
-                    { required: true, message: "Please input your username!" },
+                    { required: true, message: texts.login.userNameValidation },
                   ]}
                 >
                   <Input placeholder="Username" className="login-input" />
@@ -70,7 +69,10 @@ const Login = () => {
                 <Form.Item
                   name="password"
                   rules={[
-                    { required: true, message: "Please input your password!" },
+                    {
+                      required: true,
+                      message: texts.login.userPasswordValidation,
+                    },
                   ]}
                 >
                   <Input.Password
@@ -79,9 +81,7 @@ const Login = () => {
                   />
                 </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
+                <Form.Item name="remember" valuePropName="checked"></Form.Item>
 
                 <Form.Item>
                   <Button
@@ -90,7 +90,7 @@ const Login = () => {
                     className="login-form-button"
                     loading={loading}
                   >
-                    Log In
+                    {texts.login.logInBtnTxt}
                   </Button>
                 </Form.Item>
               </Form>

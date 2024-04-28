@@ -6,7 +6,7 @@ import CustomTabs from "../common/customTabs/CustomTab";
 import "./index.css";
 import TickButton from "../other/TickButton";
 import { copyToClipboard } from "../../js-helper/copy";
-
+import texts from "../../mockData/texts";
 const LanguageCodeBlock = ({ currentApiDetails }) => {
   const [activeLanguage, setActiveLanguage] = useState("Python");
   const [codeSnippet, setCodeSnippet] = useState("");
@@ -33,7 +33,7 @@ const LanguageCodeBlock = ({ currentApiDetails }) => {
       />
       <div className="code-block-header">
         <div className="header-title-and-button">
-          <span>API REQUEST</span>
+          <span>{texts.languageSelector.apiRequestText}</span>
           <TickButton
             tickColor="green"
             icon={<CopyOutlined style={{ color: "darkgrey" }} />}

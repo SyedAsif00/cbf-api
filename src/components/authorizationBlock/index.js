@@ -6,6 +6,7 @@ import { UserAuthInputs, SingleInput } from "../common/formInputs/formInput";
 import styles from "../../styles/styles.contants.json";
 import "./index.css";
 import { useAuth } from "../../context/AuthContext";
+import texts from "../../mockData/texts";
 const { Text } = Typography;
 
 const AuthorizationBlock = () => {
@@ -16,9 +17,7 @@ const AuthorizationBlock = () => {
   const handleTabChange = (key) => {
     setActiveLanguage(key);
   };
-  if (!currentApiDetails) {
-    return <div>Select an endpoint to see the details</div>;
-  }
+
   return (
     <div className="authorization-container">
       <div className="authorization-header">
@@ -28,13 +27,13 @@ const AuthorizationBlock = () => {
             color: styles.colors.lightGray,
           }}
         >
-          AUTHORIZATION
+          {texts.AuthorizationBlock.AuthorizationText}
         </div>
         <UserAuthInputs />
         {user ? null : (
           <Typography>
             <Text style={{ fontSize: "13px" }}>
-              log in to obtain the username and password
+              {texts.AuthorizationBlock.loginPrompt}{" "}
             </Text>
           </Typography>
         )}
@@ -45,7 +44,7 @@ const AuthorizationBlock = () => {
               color: styles.colors.lightGray,
             }}
           >
-            URL
+            {texts.AuthorizationBlock.urlText}
           </div>
           <SingleInput
             readOnly={true}

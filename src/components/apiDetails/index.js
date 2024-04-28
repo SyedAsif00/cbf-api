@@ -2,20 +2,17 @@ import React, { useContext } from "react";
 import { Input, Button } from "antd";
 import { Select, Row, Col } from "antd";
 import ApiDataContext from "../../context/ApiDataContext";
-import { useParams } from "react-router-dom"; // Import useParams
 import AuthorizationBlock from "../../components/authorizationBlock";
 import "./index.css";
 import { useResponsive } from "../../customHooks/responsive";
-
+import texts from "../../mockData/texts";
 const { Option } = Select;
 const ApiDetails = () => {
-  const { endpoint } = useParams(); // Use the endpoint from the URL
   const { apis } = useContext(ApiDataContext);
   const { currentApiDetails } = useContext(ApiDataContext);
-  const { isMobile } = useResponsive();
 
   if (!currentApiDetails) {
-    return <div>Select an endpoint to see the details</div>;
+    return <div>{texts.apiDetails.selectEndpointTitle}</div>;
   }
 
   return (
@@ -44,11 +41,13 @@ const ApiDetails = () => {
             </div>
           ))}
           <div className="response-section">
-            <span className="response-message">RESPONSE</span>
+            <span className="response-message">
+              {texts.apiDetails.responseText}
+            </span>
             <Select defaultValue="204" className="response-select">
               <Option value="204">
                 <span className="response-dot" />
-                204
+                {texts.apiDetails.response}
               </Option>
             </Select>
           </div>

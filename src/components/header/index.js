@@ -8,10 +8,11 @@ import { Avatar, Dropdown, Menu } from "antd";
 import { handleLogout } from "../../helpers/authHelper";
 import CustomDropdown from "../common/customAntdDropdown";
 import "./index.css";
+import texts from "../../mockData/texts";
 
 const Header = ({ isOpen, setIsOpen }) => {
   const { user } = useAuth();
-  const { isTablet } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
 
   const userMenuItems = [
     {
@@ -30,16 +31,18 @@ const Header = ({ isOpen, setIsOpen }) => {
 
   return (
     <header className="header">
-      <div className="logo">{headerContent.logoText}</div>
+      <div className="logo" style={{ fontSize: isMobile ? "18px" : "24px" }}>
+        {texts.header.logoText}
+      </div>
 
       {isTablet ? (
         <div className="hamburger-menu" onClick={() => setIsOpen(true)}>
-          <MenuOutlined style={{ fontSize: "24px" }} />
+          <MenuOutlined style={{ fontSize: isMobile ? "18px" : "24px" }} />
         </div>
       ) : (
         <>
           <nav className="menu">
-            {headerContent.menuItems.map((item) => (
+            {texts.header.menuItems.map((item) => (
               <Link to={item.link} className="menuItem" key={item.name}>
                 {item.name}
               </Link>
@@ -48,7 +51,7 @@ const Header = ({ isOpen, setIsOpen }) => {
 
           {!user ? (
             <Link to="/login" className="login">
-              {headerContent.loginText}
+              {texts.header.loginText}
             </Link>
           ) : (
             <CustomDropdown userMenuItems={userMenuItems} />
