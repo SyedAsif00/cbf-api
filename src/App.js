@@ -12,7 +12,6 @@ import ApiDetails from "./components/apiDetails";
 import UserProfile from "./components/userProfile";
 import Loginform from "./components/auth/login";
 import "./App.css";
-import Loader from "../src/components/common/antdSpin";
 
 const App = () => {
   return (

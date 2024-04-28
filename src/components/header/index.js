@@ -6,22 +6,27 @@ import { MenuOutlined, UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Avatar, Dropdown, Menu } from "antd";
 import { handleLogout } from "../../helpers/authHelper";
+import CustomDropdown from "../common/customAntdDropdown";
 import "./index.css";
 
 const Header = ({ isOpen, setIsOpen }) => {
   const { user } = useAuth();
   const { isTablet } = useResponsive();
 
-  const userMenu = (
-    <Menu>
-      <Menu.Item key="profile" icon={<UserOutlined />}>
-        <Link to="/profile">Profile</Link>
-      </Menu.Item>
-      <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
-        Logout
-      </Menu.Item>
-    </Menu>
-  );
+  const userMenuItems = [
+    {
+      key: "profile",
+      icon: <UserOutlined />,
+      text: "Profile",
+      link: "/profile",
+    },
+    {
+      key: "logout",
+      icon: <LogoutOutlined />,
+      text: "Logout",
+      onClick: handleLogout,
+    },
+  ];
 
   return (
     <header className="header">
@@ -46,13 +51,7 @@ const Header = ({ isOpen, setIsOpen }) => {
               {headerContent.loginText}
             </Link>
           ) : (
-            <Dropdown
-              overlay={userMenu}
-              trigger={["click"]}
-              className="avatar-dropdown"
-            >
-              <Avatar icon={<UserOutlined />} style={{ cursor: "pointer" }} />
-            </Dropdown>
+            <CustomDropdown userMenuItems={userMenuItems} />
           )}
 
           <Link to="/help-center" className="helpCenter">

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/header";
 import Sidebar from "../../components/sidebar";
 import { useResponsive } from "../../customHooks/responsive";
 
-const CommonLayout = ({ isOpen, setIsOpen, children }) => {
+const CommonLayout = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { isMobile } = useResponsive();
 
   return (
     <div>
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div style={isMobile ? {} : { display: "flex" }}>
+      <div style={{ display: "flex" }}>
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         <div
           className={`overlay ${!isOpen && "overlayHidden"} ${
