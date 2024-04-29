@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Row, Col, message } from "antd";
 import "./index.css";
 import img1 from "../../../assets/undraw_file_sync_ot38.svg";
-import loginUser from "../../../firebase/auth.firebase";
+import loginUser from "../../../firebase/auth.login";
 import texts from "../../../mockData/texts";
 const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Login = () => {
     console.log("Success:", values);
     setLoading(true);
     try {
-      const user = await loginUser(values.username, values.password);
+      const user = await loginUser(values.email, values.password);
       console.log("User logged in successfully:", user);
       navigate("/dashboard");
       message.success(texts.login.onFinishSuccess);
@@ -58,12 +58,12 @@ const Login = () => {
                 className="login-form"
               >
                 <Form.Item
-                  name="username"
+                  name="email"
                   rules={[
                     { required: true, message: texts.login.userNameValidation },
                   ]}
                 >
-                  <Input placeholder="Username" className="login-input" />
+                  <Input placeholder="Email" className="login-input" />
                 </Form.Item>
 
                 <Form.Item
@@ -98,6 +98,8 @@ const Login = () => {
             <Col xs={24} md={12} className="image-column">
               <img src={img1} alt="Login Visual" className="login-image" />
             </Col>
+
+            <Link to="/register">or register with us</Link>
           </Row>
         </Col>
       </Row>

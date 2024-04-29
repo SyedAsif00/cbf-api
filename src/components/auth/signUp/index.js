@@ -1,22 +1,43 @@
-import React from "react";
-import { Form, Input, Button, Checkbox, Row, Col } from "antd";
-import img1 from "../../../assets/undraw_file_sync_ot38.svg"; // Your image file path
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Button, Row, Col, message } from "antd";
 import "./index.css";
-const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+import img1 from "../../../assets/undraw_file_sync_ot38.svg";
+import createUser from "../../../firebase/auth.register"; // Adjust the path as necessary
+import texts from "../../../mockData/texts";
+
+const SignUp = () => {
+  const navigate = useNavigate();
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+
+  const onFinish = async (values) => {
+    console.log("Registration data:", values);
+    setLoading(true);
+    try {
+      const user = await createUser(
+        values.email,
+        values.password,
+        values.username
+      );
+      console.log("User registered successfully:", user);
+      message.success(texts.signup.onFinishSuccess);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Registration failed:", error);
+      message.error(`Registration failed: ${error.message}`);
+      setLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    message.error(texts.signup.onFinishFailed);
   };
 
   return (
     <div className="login-container">
       <Row align="middle" justify="center" style={{ minHeight: "100vh" }}>
-        <Col xs={24} md={12} className="image-column">
-          <img src={img1} alt="Login Visual" className="login-image" />
-        </Col>
         <Col
           xs={22}
           sm={20}
@@ -26,15 +47,18 @@ const Login = () => {
           xxl={12}
           style={{ margin: "0 auto" }}
         >
-          <Row gutter={24}>
+          <Row gutter={100}>
+            <Col xs={24} md={12} className="image-column">
+              <img src={img1} alt="Sign Up Visual" className="login-image" />
+            </Col>
             <Col xs={24} md={12} className="form-column">
-              <h2 className="login-title">Login to sustraxAPI</h2>
+              <h2 className="login-title">{texts.signup.signupTitle}</h2>
               <p className="login-description">
-                Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
-                consectetur adipisicing.
+                {texts.signup.signupDescription}
               </p>
               <Form
-                name="basic"
+                form={form}
+                name="signup"
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
@@ -44,19 +68,37 @@ const Login = () => {
                 <Form.Item
                   name="username"
                   rules={[
-                    { required: true, message: "Please input your username!" },
+                    {
+                      required: true,
+                      message: texts.signup.userNameValidation,
+                    },
                   ]}
-                  className="login-form-item"
                 >
                   <Input placeholder="Username" className="login-input" />
                 </Form.Item>
-
+                <Form.Item
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: texts.signup.userEmailValidation,
+                    },
+                  ]}
+                >
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    className="login-input"
+                  />
+                </Form.Item>
                 <Form.Item
                   name="password"
                   rules={[
-                    { required: true, message: "Please input your password!" },
+                    {
+                      required: true,
+                      message: texts.signup.userPasswordValidation,
+                    },
                   ]}
-                  className="login-form-item"
                 >
                   <Input.Password
                     placeholder="Password"
@@ -64,17 +106,14 @@ const Login = () => {
                   />
                 </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 <Form.Item>
                   <Button
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
+                    loading={loading}
                   >
-                    Log In
+                    {texts.signup.signupBtnTxt}
                   </Button>
                 </Form.Item>
               </Form>
@@ -86,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

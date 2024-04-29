@@ -78,3 +78,29 @@
     font-size: 20px;
   }
 }
+/* Add this to your index.css or appropriate stylesheet */
+.ant-form-item-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0; /* If you want to remove the space between the label and input */
+}
+
+.form-hint {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: -8px; /* Adjust this value based on your design */
+}
+
+/* Additional styles to ensure label and input are aligned correctly */
+.ant-form-item {
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: center;
+  grid-gap: 8px; /* Adjust the space between label and input */
+}
+
+/* Ensure full width for input */
+.ant-form-item-control {
+  flex: 1;
+}

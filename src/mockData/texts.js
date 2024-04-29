@@ -14,6 +14,17 @@ const texts = {
     onFinishSuccess: "user logged in successfully",
     onFinishFailed: "Please complete all required fields.",
   },
+  signup: {
+    signupTitle: "Register to sustraxAPI",
+    signupDescription:
+      "Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.",
+    userNameValidation: "Please input your username!",
+    userEmailValidation: "",
+    userPasswordValidation: "Please input your password!",
+    signupBtnTxt: "Register",
+    onFinishSuccess: "user logged in successfully",
+    onFinishFailed: "Please complete all required fields.",
+  },
   apiDetails: {
     title: "API Details",
     baseUrl: "Base URL",
@@ -45,6 +56,9 @@ const texts = {
     searchPlaceholder: "Search",
     loginText: "Log in",
     helpCenterText: "Help center",
+  },
+  profile: {
+    profileTitle: "Profile",
   },
 };
 

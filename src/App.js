@@ -11,6 +11,7 @@ import CommonLayout from "./components/commonLayout";
 import ApiDetails from "./components/apiDetails";
 import UserProfile from "./components/userProfile";
 import Loginform from "./components/auth/login";
+import SignUpForm from "./components/auth/signUp";
 import "./App.css";
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
               }
             />
             <Route path="/login" element={<Loginform />} />
+            <Route path="/register" element={<SignUpForm />} />
           </Routes>
         </ApiDataProvider>
       </AuthProvider>
