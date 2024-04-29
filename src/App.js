@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import { ApiDataProvider } from "./context/ApiDataContext";
-import { AuthProvider } from "./context/AuthContext";
-import CommonLayout from "./components/commonLayout";
-import ApiDetails from "./components/apiDetails";
-import UserProfile from "./components/userProfile";
-import Loginform from "./components/auth/login";
-import SignUpForm from "./components/auth/signUp";
+
+import {
+  CommonLayout,
+  ApiDetails,
+  UserProfile,
+  Loginform,
+  SignUpForm,
+  ApiDataProvider,
+  AuthProvider,
+  ContactUs,
+} from "./shared";
 import "./App.css";
 
 const App = () => {
@@ -48,6 +52,16 @@ const App = () => {
             />
             <Route path="/login" element={<Loginform />} />
             <Route path="/register" element={<SignUpForm />} />
+
+            <Route
+              path="/contactus"
+              element={
+                <CommonLayout>
+                  <ContactUs />
+                </CommonLayout>
+              }
+            />
+            {/* <Route path="/contactus" element={<ContactUs />} /> */}
           </Routes>
         </ApiDataProvider>
       </AuthProvider>

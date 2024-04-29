@@ -55,10 +55,27 @@ const texts = {
     ],
     searchPlaceholder: "Search",
     loginText: "Log in",
-    helpCenterText: "Help center",
+    contactUs: "Contact us",
   },
   profile: {
     profileTitle: "Profile",
+  },
+  contactUs: {
+    contactTitle: "GET IN TOUCH",
+    contactDescription:
+      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+    userNameValid: "please input your name!",
+    emailValid: "please input your email!",
+    messageValid: "please input your message!",
+    sendBtn: "Send Message",
+    address: {
+      title: "Address",
+      location:
+        "Carbon Footprint Ltd is registered in England and Wales (no. 4532520)",
+      location_Two:
+        "Registered Office: Belvedere House, Basing View, Basingstoke, Hampshire, RG21 4HG, UK",
+      email: "© Carbon Footprint Ltd - all rights reserved carbonfootprint.com",
+    },
   },
 };
 

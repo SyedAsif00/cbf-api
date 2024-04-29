@@ -1,0 +1,4 @@
+/* CSS */
+.custom-input:focus {
+  border-color: #00cc00; /* Light green focus border color */
+}

@@ -57,8 +57,8 @@ const Header = ({ isOpen, setIsOpen }) => {
             <CustomDropdown userMenuItems={userMenuItems} />
           )}
 
-          <Link to="/help-center" className="helpCenter">
-            {headerContent.helpCenterText}
+          <Link to="/contactus" className="helpCenter">
+            {texts.header.contactUs}
           </Link>
         </>
       )}
