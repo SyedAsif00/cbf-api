@@ -1,12 +1,13 @@
 import { auth } from "./firebase.config"; // Make sure the path to firebase-config is correct
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
-const createUser = async (email, password, username) => {
+const createUser = async (username, email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
+      username
     );
     const user = userCredential.user;
     await updateProfile(user, {

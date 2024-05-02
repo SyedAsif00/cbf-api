@@ -1,8 +1,7 @@
 /* api-details.css */
 .api-details-container {
-  width: 49vw;
+  width: 48vw;
 
-  background: #ffffff; /* Assuming a light background */
   padding: 20px;
   border-radius: 8px;
   margin: 20px auto; /* Center the container */

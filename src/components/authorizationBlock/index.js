@@ -19,46 +19,46 @@ const AuthorizationBlock = () => {
   };
 
   return (
-    <div className="authorization-container">
-      <div className="authorization-header">
-        <div
+    <section className="authorization-container">
+      <header className="authorization-header">
+        <p
           style={{
             fontSize: styles.fontSize.smallFont,
             color: styles.colors.lightGray,
           }}
         >
           {texts.AuthorizationBlock.AuthorizationText}
-        </div>
+        </p>
         <UserAuthInputs />
-        {user ? null : (
+        {!user && (
           <Typography>
             <Text style={{ fontSize: "13px" }}>
-              {texts.AuthorizationBlock.loginPrompt}{" "}
+              {texts.AuthorizationBlock.loginPrompt}
             </Text>
           </Typography>
         )}
         <div style={{ marginTop: "20px" }}>
-          <div
+          <p
             style={{
               fontSize: styles.fontSize.smallFont,
               color: styles.colors.lightGray,
             }}
           >
             {texts.AuthorizationBlock.urlText}
-          </div>
+          </p>
           <SingleInput
             readOnly={true}
             addonBefore="BaseURL"
             value={`${currentApiDetails.baseUrl}/${currentApiDetails.endpoint}`}
           />
         </div>
-      </div>
+      </header>
 
       <LanguageCodeBlock
         language={activeLanguage}
         currentApiDetails={currentApiDetails}
       />
-    </div>
+    </section>
   );
 };
 

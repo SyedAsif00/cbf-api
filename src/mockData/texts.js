@@ -7,23 +7,25 @@ const texts = {
   login: {
     loginTitle: "Login to sustraxAPI",
     loginDescription:
-      "Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.",
+      "Explore Sustrax API for seamless integration and efficient data management. Explore Sustrax API for seamless integration and efficient data management.  ",
     userNameValidation: "Please input your username!",
     userPasswordValidation: "Please input your password!",
     logInBtnTxt: "log in",
     onFinishSuccess: "user logged in successfully",
     onFinishFailed: "Please complete all required fields.",
+    linkTxt: "or regsiter with us",
   },
   signup: {
     signupTitle: "Register to sustraxAPI",
     signupDescription:
-      "Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.",
+      "Explore Sustrax API for seamless integration and efficient data management. Explore Sustrax API for seamless integration and efficient data management. ",
     userNameValidation: "Please input your username!",
     userEmailValidation: "",
     userPasswordValidation: "Please input your password!",
     signupBtnTxt: "Register",
     onFinishSuccess: "user logged in successfully",
     onFinishFailed: "Please complete all required fields.",
+    register: "register",
   },
   apiDetails: {
     title: "API Details",
@@ -59,23 +61,27 @@ const texts = {
   },
   profile: {
     profileTitle: "Profile",
+    userName: {
+      nameTitle: "Name",
+      exampleName: "eg. john",
+    },
+    userEmail: {
+      emailTitle: "Email",
+      exampleEmail: "eg. abc@gmail.com",
+    },
+
+    updateBtnTxt: "Update",
+    newPassword: "New password",
+    confirmNewPassword: "Confirm New Password",
   },
   contactUs: {
     contactTitle: "GET IN TOUCH",
     contactDescription:
-      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.",
+      "Contact sustraxAPI with any inquiries, feedback, or support requests you have. Our team is ready to assist you.",
     userNameValid: "please input your name!",
     emailValid: "please input your email!",
     messageValid: "please input your message!",
     sendBtn: "Send Message",
-    address: {
-      title: "Address",
-      location:
-        "Carbon Footprint Ltd is registered in England and Wales (no. 4532520)",
-      location_Two:
-        "Registered Office: Belvedere House, Basing View, Basingstoke, Hampshire, RG21 4HG, UK",
-      email: "© Carbon Footprint Ltd - all rights reserved carbonfootprint.com",
-    },
   },
 };
 

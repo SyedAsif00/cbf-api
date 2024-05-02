@@ -1,127 +1,96 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, Row, Col, message } from "antd";
-import "./index.css";
+import { useNavigate, Link } from "react-router-dom";
+import { Row, Col, message, Button } from "antd";
+import { Helmet } from "react-helmet";
 import img1 from "../../../assets/undraw_file_sync_ot38.svg";
-import createUser from "../../../firebase/auth.register"; // Adjust the path as necessary
+import createUser from "../../../firebase/auth.register";
+import "./index.css";
 import texts from "../../../mockData/texts";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [form] = Form.useForm();
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const onFinish = async (values) => {
-    console.log("Registration data:", values);
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    if (!username || !email || !password) {
+      message.error("Please fill in all fields.");
+      return;
+    }
+
     setLoading(true);
     try {
-      const user = await createUser(
-        values.email,
-        values.password,
-        values.username
-      );
-      console.log("User registered successfully:", user);
-      message.success(texts.signup.onFinishSuccess);
+      await createUser(username, email, password);
       navigate("/dashboard");
+      message.success("Registration successful");
     } catch (error) {
-      console.error("Registration failed:", error);
-      message.error(`Registration failed: ${error.message}`);
+      console.error("Registration error:", error);
+      message.error(error.message || "Registration failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-    message.error(texts.signup.onFinishFailed);
-  };
-
   return (
-    <div className="login-container">
-      <Row align="middle" justify="center" style={{ minHeight: "100vh" }}>
-        <Col
-          xs={22}
-          sm={20}
-          md={18}
-          lg={16}
-          xl={14}
-          xxl={12}
-          style={{ margin: "0 auto" }}
-        >
-          <Row gutter={100}>
-            <Col xs={24} md={12} className="image-column">
-              <img src={img1} alt="Sign Up Visual" className="login-image" />
-            </Col>
-            <Col xs={24} md={12} className="form-column">
-              <h2 className="login-title">{texts.signup.signupTitle}</h2>
-              <p className="login-description">
+    <main className="login-container">
+      <Row
+        className="loginMainRow"
+        align="middle"
+        justify="center"
+        gutter={[16, 16]}
+      >
+        <Col xs={24} md={24} xl={12} className="image-column">
+          <figure>
+            <img src={img1} alt="Login Visual" className="login-image" />
+          </figure>
+        </Col>
+        <Col xs={24} md={24} xl={12} className="formContainer">
+          <section>
+            <header className="loginTextContainer">
+              <h1 className="loginText">
+                Register to{" "}
+                <span className="loginSustraxApiTxt">SustraxAPI</span>
+              </h1>
+              <span className="loginDescription">
                 {texts.signup.signupDescription}
-              </p>
-              <Form
-                form={form}
-                name="signup"
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-                className="login-form"
-              >
-                <Form.Item
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: texts.signup.userNameValidation,
-                    },
-                  ]}
-                >
-                  <Input placeholder="Username" className="login-input" />
-                </Form.Item>
-                <Form.Item
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: texts.signup.userEmailValidation,
-                    },
-                  ]}
-                >
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    className="login-input"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: texts.signup.userPasswordValidation,
-                    },
-                  ]}
-                >
-                  <Input.Password
-                    placeholder="Password"
-                    className="login-input"
-                  />
-                </Form.Item>
-
-                <Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                    loading={loading}
-                  >
-                    {texts.signup.signupBtnTxt}
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Col>
-          </Row>
+              </span>
+            </header>
+            <form className="formInputs" onSubmit={handleSubmit}>
+              <input
+                aria-label="username"
+                placeholder="Username"
+                type="userName"
+                className="formInput"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <input
+                aria-label="Email"
+                placeholder="email..."
+                type="email"
+                className="formInput"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                aria-label="Password"
+                placeholder="password..."
+                type="password"
+                className="formInput"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button className="loginBtn" type="submit" onClick={handleSubmit}>
+                {loading ? `${texts.signup.signupBtnTxt}ing` : "Registering"}
+              </Button>
+            </form>
+          </section>
         </Col>
       </Row>
-    </div>
+    </main>
   );
 };
 

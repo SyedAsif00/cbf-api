@@ -1,53 +1,110 @@
 .login-container {
-  background-color: #f7f7f7; /* or any background color you have */
-  padding: 20px;
+  background-color: #f7f7f7;
+  padding: 20px 20px;
+  height: 100vh;
 }
-
-.form-column {
-  padding-right: 24px; /* Add some padding if needed */
+.loginMainRow {
+  margin-top: 100px;
 }
-
-.login-title {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-
-.login-description {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.65);
-  margin-bottom: 40px;
-}
-
-.login-form {
-  max-width: 300px; /* Or as per your design */
-}
-
-.login-input {
-  border-radius: 2px;
-  border: 1px solid #d9d9d9;
-}
-
-.login-form-button {
+.formContainer {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  background-color: #0f9d58; /* Sample color */
-  border-color: #0f9d58; /* Sample color */
-  /* Additional button styling as needed */
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.loginTextContainer {
+  padding: 30px 0px;
+  width: 400px;
+}
+.loginText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+.loginDescription {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #929090;
+}
+.loginSustraxApiTxt {
+  font-size: 30px;
+  color: #38d39f;
+}
+.formInputs {
+  width: 430px;
+  padding: 20px 0px;
+}
+.formInput {
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: rgb(227, 226, 224);
+  margin-bottom: 20px;
+  color: #615f5f;
+}
+.formInput::placeholder {
+  color: #898888;
 }
 
-.login-form-item {
-  margin-bottom: 16px;
-}
-
-.login-form-forgot {
-  float: right;
-}
-
-.image-column {
-  text-align: center;
-  padding-left: 24px; /* Add some padding if needed */
+.loginBtn {
+  width: 100%;
+  background-color: #38d39f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-image {
-  max-width: 100%; /* Allow the image to be as wide as its container */
-  height: auto; /* Maintain aspect ratio */
+  /* margin-top: 20px; */
+  width: 100%;
+}
+.registerLink {
+  margin-top: 20px;
+  text-align: center;
+}
+.linkText {
+  color: #38d39f;
+}
+
+@media (max-width: 768px) {
+  .loginMainRow {
+    margin-top: 0px;
+  }
+  .formInputs {
+    padding: 10px 0px;
+    width: 100%;
+  }
+  .formInput {
+    padding: 15px 15px;
+  }
+  .loginBtn {
+    padding: 10px 10px;
+  }
+  .loginText {
+    font-size: 18px !important;
+  }
+  .loginSustraxApiTxt {
+    font-size: 22px !important;
+  }
+  .loginTextContainer {
+    width: 100%;
+  }
+  .registerLink {
+    margin-top: 0px !important;
+  }
+  .loginText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .image-column {
+    margin-top: 80px;
+  }
 }

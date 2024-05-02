@@ -1,46 +1,6 @@
-/* src/components/profile/ProfilePage.css */
-.profile-card {
-  max-width: 100vw;
-  border-radius: 4px;
-  box-shadow: none;
-  border: none;
-  margin: 0;
-  padding: 24px;
+.profileMainContainer {
+  padding: 20px 20px !important;
 }
-.profile-dropdown {
-  float: right; /* Align dropdown to the right */
-  margin-bottom: 1rem;
-}
-
-.ant-dropdown-link {
-  color: black;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: auto; /* Or set a specific width */
-  cursor: pointer;
-}
-
-.ant-dropdown-link:hover {
-  opacity: 0.85; /* Optional: Change opacity on hover */
-}
-
-/* Styling the dropdown menu */
-.ant-menu-item {
-  color: #3f6600; /* This should match the green color from the image */
-  margin: 0;
-}
-
-/* Styling the icons inside the menu */
-.ant-menu-item .anticon {
-  color: #3f6600; /* This should match the green color from the image */
-  margin-right: 8px;
-}
-
-/* Add more styles if needed to match your design requirements */
 
 .profile-title {
   font-size: 24px;
@@ -49,21 +9,9 @@
   margin-bottom: 24px;
 }
 
-/* Remove padding around the Card content */
-.ant-card-body {
-  padding: 0;
-}
-
-/* Style for form input */
-.ant-form-item-label > label {
-  font-weight: 500; /* Set font weight for labels */
-}
-
-/* Style for the Update button */
 .ant-btn-primary {
-  background-color: #4caf50; /* Custom color for the button */
-  border-color: #4caf50; /* Custom border color */
-  /* Full width button */
+  background-color: #4caf50;
+  border-color: #4caf50;
   display: block;
   width: 100%;
 }
@@ -78,29 +26,15 @@
     font-size: 20px;
   }
 }
-/* Add this to your index.css or appropriate stylesheet */
-.ant-form-item-label {
+
+.profile-input h4 {
   display: flex;
-  flex-direction: column;
+  text-align: center;
   justify-content: center;
-  padding-bottom: 0; /* If you want to remove the space between the label and input */
+  padding-top: 5px;
+  font-size: 15px;
 }
-
-.form-hint {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.45);
-  margin-top: -8px; /* Adjust this value based on your design */
-}
-
-/* Additional styles to ensure label and input are aligned correctly */
-.ant-form-item {
-  display: grid;
-  grid-template-columns: max-content auto;
-  align-items: center;
-  grid-gap: 8px; /* Adjust the space between label and input */
-}
-
-/* Ensure full width for input */
-.ant-form-item-control {
-  flex: 1;
+.profile-input p {
+  color: grey;
+  font-size: 13px;
 }
