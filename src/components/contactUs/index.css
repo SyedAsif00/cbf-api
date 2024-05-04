@@ -1,10 +1,60 @@
-.contactUsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.contactMainContainer {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+  padding: 20px 20px;
+}
+.contactFormTitle {
+  color: #228b22;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.contactFormDescription {
+  margin-bottom: 34px;
+  color: rgba(0, 0, 0, 0.65);
 }
 
-.columnContainer {
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 10px 0px;
+}
+
+.inputLabels {
+  font-weight: bold;
+  color: #544c4c;
+}
+.input {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  font-size: 17px;
+  color: grey;
+}
+.sendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  padding: 20px 20px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: green;
+  border: none;
+  cursor: pointer;
+}
+.contactFormTextArea {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* .columnContainer {
   padding: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -101,3 +151,11 @@
   gap: 30px;
   line-height: 18px;
 }
+
+@media (max-width: 768px) {
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+  }
+} */

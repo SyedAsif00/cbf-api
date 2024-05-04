@@ -10,7 +10,7 @@ import {
   CommonLayout,
   ApiDetails,
   UserProfile,
-  Loginform,
+  LoginForm,
   SignUpForm,
   ApiDataProvider,
   AuthProvider,
@@ -50,7 +50,7 @@ const App = () => {
                 </CommonLayout>
               }
             />
-            <Route path="/login" element={<Loginform />} />
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<SignUpForm />} />
 
             <Route

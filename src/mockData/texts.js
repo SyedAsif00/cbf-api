@@ -75,13 +75,46 @@ const texts = {
     confirmNewPassword: "Confirm New Password",
   },
   contactUs: {
-    contactTitle: "GET IN TOUCH",
-    contactDescription:
-      "Contact sustraxAPI with any inquiries, feedback, or support requests you have. Our team is ready to assist you.",
-    userNameValid: "please input your name!",
-    emailValid: "please input your email!",
-    messageValid: "please input your message!",
-    sendBtn: "Send Message",
+    contactForm: {
+      title: "Get in Touch",
+
+      description: "Get in touch, our team is ready to help you!",
+      inputs: {
+        userNameLabel: "Username",
+        userEmail: "Email",
+        userMessage: "Message",
+      },
+      btn: "Send Message",
+    },
+    AddressBox: {
+      title: "We would loev to hear from you",
+      listItems: [
+        "Need help with compliance",
+        "Are looking to reduce your energy costs across your company",
+        "Are keen to develop strong sustainability credentials for your organisation",
+        "Want to take your environmental programme to the next level",
+        "Have goals to be carbon neutral",
+        "Are looking for high quality carbon offset projects to support",
+      ],
+
+      emailUs: {
+        title: "Email Us:",
+        email: "info@carbonfootprint.com",
+      },
+      callUs: {
+        title: "CallUs:",
+        phoneNumber: "+44 (0)1256 592599",
+      },
+
+      headOfficeAddress: {
+        title: "Head Office Address",
+        addresses: [
+          "Carbon Footprint Ltd",
+          "Belvedere House",
+          "Hampshire, RG21 4HG, UK",
+        ],
+      },
+    },
   },
 };
 

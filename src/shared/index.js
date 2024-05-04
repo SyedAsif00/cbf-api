@@ -3,7 +3,7 @@ import Sidebar from "../components/sidebar";
 import AuthorizationBlock from "../components/authorizationBlock";
 import LanguageCodeBlock from "../components/langugaeSelector";
 import ApiDetails from "../components/apiDetails";
-import Loginform from "../components/auth/login";
+import LoginForm from "../components/auth/login";
 import SignUpForm from "../components/auth/signUp";
 import CommonLayout from "../components/commonLayout";
 import UserProfile from "../components/userProfile";
@@ -18,7 +18,7 @@ export {
   ApiDetails,
   CommonLayout,
   SignUpForm,
-  Loginform,
+  LoginForm,
   LanguageCodeBlock,
   ApiDataProvider,
   AuthProvider,

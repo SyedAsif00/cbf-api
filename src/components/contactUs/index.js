@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Row, Col, message } from "antd";
+import { Row, Col, message, Input, Button } from "antd";
 import { Helmet } from "react-helmet";
 import texts from "../../mockData/texts";
-import styles from "./ContactUs.module.css";
+import "./index.css";
 import { useResponsive } from "../../customHooks/responsive";
 import { addContactMessage } from "../../firebase/contactMessage.firebase";
 
@@ -45,11 +45,20 @@ const ContactUs = () => {
     }
   };
 
+  const contactInputs = [
+    {
+      label: "Username",
+      placeholder: "username...",
+    },
+    {
+      label: "Email",
+      placeholder: "email...",
+    },
+  ];
+
+  const { TextArea } = Input;
   return (
-    <main
-      className={styles.contactUsContainer}
-      style={{ padding: isMobile ? "0px" : "50px", width: "100%" }}
-    >
+    <main style={{ padding: isMobile ? "0px" : "50px", width: "100%" }}>
       <Helmet>
         <title>Contact Us - SustraxAPI</title>
         <meta
@@ -57,64 +66,53 @@ const ContactUs = () => {
           content="Contact SustraxAPI with any inquiries, feedback, or support requests you have. Our team is ready to assist you."
         />
       </Helmet>
-      <Row
-        justify="center"
-        align="top"
-        gutter={[60, 60]}
-        style={{ width: "60%" }}
-      >
-        <Col
-          xs={24}
-          sm={24}
-          md={24}
-          lg={24}
-          xl={24}
-          className={styles.columnContainer}
-        >
-          <section>
-            <header>
-              <h2 className={styles.title}>{texts.contactUs.contactTitle}</h2>
-              <p className={styles.description}>
-                {texts.contactUs.contactDescription}
-              </p>
+      <Row justify="" align="top" gutter={[50, 50]}>
+        <Col xs={24} sm={24} md={14} lg={14} xl={14}>
+          <section className="contactMainContainer">
+            <header className="contactFormTitle">
+              {texts.contactUs.contactForm.title}
             </header>
-            <form onSubmit={handleSubmit}>
-              <div style={{ display: "flex" }}>
-                {[
-                  { name: "name", label: "Name", type: "text" },
-                  { name: "email", label: "Email", type: "email" }, // Changed type to 'email' for proper validation
-                ].map((inputProps, index) => (
-                  <div key={index} className={styles.inputContainer}>
-                    <label className={styles.inputLabel}>
-                      {inputProps.label}
-                      <input
-                        type={inputProps.type}
-                        name={inputProps.name}
-                        value={formData[inputProps.name]}
-                        onChange={handleChange}
-                        className={styles.input}
-                      />
-                    </label>
+            <p className="contactFormDescription">
+              {texts.contactUs.contactForm.description}
+            </p>
+
+            <form className="contactFormContainer">
+              <div className="inputWrapper">
+                {contactInputs.map((inpt, index) => (
+                  <div>
+                    <label className="inputLabels">{inpt.label}</label>
+                    <Input className="input" placeholder={inpt.placeholder} />
                   </div>
                 ))}
               </div>
-              <div className={styles.messageWrapper}>
-                <label className={styles.messageLabel}>
-                  Message
-                  <textarea
-                    className={styles.textArea}
-                    maxLength={600}
-                    rows={4}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </label>
+              <div className="messageWrapper">
+                <div>
+                  <label className="inputLabels">Message</label>
+                  <TextArea
+                    className="contactFormTextArea"
+                    rows={10}
+                  ></TextArea>
+                </div>
               </div>
-              <button type="submit" className={styles.button}>
-                {texts.contactUs.sendBtn}
-              </button>
+              <Button className="sendBtn">
+                {texts.contactUs.contactForm.btn}
+              </Button>
             </form>
+          </section>
+        </Col>
+
+        <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+          <section>
+            <header>
+              <h2 className="">{texts.contactUs.AddressBox.title}</h2>
+            </header>
+            <div className="addressBoxLists">
+              {texts.contactUs.AddressBox.listItems.map((listItm, index) => (
+                <ul className="addressLists">
+                  <li className="addressList">{listItm}</li>
+                </ul>
+              ))}
+            </div>
           </section>
         </Col>
       </Row>
