@@ -6,6 +6,7 @@ import { EnvironmentOutlined } from "@ant-design/icons";
 import AuthorizationBlock from "../../components/authorizationBlock";
 import { generateCodeSnippets } from "../../js-helper/helpers";
 import { CustomInput } from "../common/formInputs/formInput";
+import { DummyUrl } from "../../mockData/mockData";
 import "./index.css";
 
 const { Option } = Select;
@@ -16,9 +17,8 @@ const ApiDetails = () => {
   const name = query.get("name");
   const { data: emissionsData } = useEmissionData();
   const categoryData = emissionsData[name];
-  const baseUrl = `https://xyz.com/${name}`; // Assuming name is part of the URL
+  const baseUrl = `${DummyUrl}${name}`;
 
-  // State to hold input values
   const [inputValues, setInputValues] = useState({ params: {} });
   const [snippets, setSnippets] = useState({
     python: "",
@@ -80,17 +80,17 @@ const ApiDetails = () => {
                 <div key={text.name} className="formItem">
                   <div className="formTextLabel">
                     <label>{text.title}</label>
-                    {text.desc && (
-                      <p className="inputDescription">{text.desc}</p>
-                    )}
-                  </div>
-                  <div>
                     <CustomInput
                       value={inputValues.params[text.name] || ""}
                       onChange={(e) =>
                         handleInputChange(text.name, e.target.value)
                       }
                     />
+                  </div>
+                  <div>
+                    {text.desc && (
+                      <p className="inputDescription">{text.desc}</p>
+                    )}
                   </div>
                 </div>
               ))}

@@ -69,6 +69,10 @@
   box-shadow: 0 0 8px rgba(121, 210, 143, 0.5);
 }
 
+.sidebarOpen-search {
+  margin-top: 20px;
+}
+
 /* ///////////////// */
 
 .header {
@@ -135,4 +139,33 @@
 .left {
   left: 0;
   right: auto;
+}
+.profile-section {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+.profile-section div {
+  display: flex;
+  align-items: center;
+}
+
+.profile-section .username,
+.profile-section .role {
+  margin-left: 10px;
+}
+
+.profile-section .username {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.profile-section .role {
+  font-size: 14px;
+  color: #555;
 }
