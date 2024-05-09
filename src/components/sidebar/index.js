@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           className="searchInput"
           value={search}
           onChange={handleSearchChange}
-          style={{ margin: "10px" }}
+          style={{ marginTop: "30px" }}
         />
         <ul style={{ listStyle: "none", marginTop: 20 }} className="list">
           {filteredEmissions.map((key) => (

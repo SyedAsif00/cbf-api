@@ -4,7 +4,7 @@ import { useEmissionData } from "../../context/EmissionDataContext";
 import { Row, Col, Select, Card, Input } from "antd";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import AuthorizationBlock from "../../components/authorizationBlock";
-import { generateCodeSnippets } from "../../js-helper/copy";
+import { generateCodeSnippets } from "../../js-helper/helpers";
 import { CustomInput } from "../common/formInputs/formInput";
 import "./index.css";
 

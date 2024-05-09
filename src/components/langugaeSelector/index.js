@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CopyOutlined } from "@ant-design/icons";
 import CustomTabs from "../../components/common/customTabs/CustomTab";
 import "./index.css";
-import { copyToClipboard } from "../../js-helper/copy";
+import { copyToClipboard } from "../../js-helper/helpers";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 
