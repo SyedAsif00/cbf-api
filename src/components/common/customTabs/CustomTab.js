@@ -1,13 +1,16 @@
 import React from "react";
 import { Tabs } from "antd";
+import "./index.css";
 
 const { TabPane } = Tabs;
 
-const CustomTabs = ({ activeKey, onTabChange, tabList }) => {
+const CustomTabs = ({ activeKey, onChange, tabsData }) => {
   return (
-    <Tabs activeKey={activeKey} onChange={onTabChange}>
-      {tabList.map((tab) => (
-        <TabPane tab={tab.title} key={tab.key} />
+    <Tabs defaultActiveKey={activeKey} onChange={onChange}>
+      {tabsData.map(({ key, label, content }) => (
+        <TabPane tab={label} key={key}>
+          {content}
+        </TabPane>
       ))}
     </Tabs>
   );

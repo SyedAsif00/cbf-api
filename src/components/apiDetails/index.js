@@ -1,78 +1,111 @@
-import React, { useContext } from "react";
-import { Helmet } from "react-helmet"; // Import Helmet for managing head section
-import { Input, Select, Row, Col } from "antd";
-import ApiDataContext from "../../context/ApiDataContext";
-import { AuthorizationBlock } from "../../shared";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useEmissionData } from "../../context/EmissionDataContext";
+import { Row, Col, Select, Card, Input } from "antd";
+import { EnvironmentOutlined } from "@ant-design/icons";
+import AuthorizationBlock from "../../components/authorizationBlock";
+import { generateCodeSnippets } from "../../js-helper/copy";
+import { CustomInput } from "../common/formInputs/formInput";
 import "./index.css";
-import texts from "../../mockData/texts";
+
 const { Option } = Select;
 
 const ApiDetails = () => {
-  const { currentApiDetails } = useContext(ApiDataContext);
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const name = query.get("name");
+  const { data: emissionsData } = useEmissionData();
+  const categoryData = emissionsData[name];
+  const baseUrl = `https://xyz.com/${name}`; // Assuming name is part of the URL
 
-  if (!currentApiDetails) {
-    return <h2>{texts.apiDetails.selectEndpointTitle}</h2>;
+  // State to hold input values
+  const [inputValues, setInputValues] = useState({ params: {} });
+  const [snippets, setSnippets] = useState({
+    python: "",
+    javascript: "",
+    curl: "",
+  });
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+  const updateCredentials = (username, password) => {
+    setCredentials({ username, password });
+  };
+  useEffect(() => {
+    const newSnippets = generateCodeSnippets(
+      baseUrl,
+      inputValues.params,
+      credentials
+    );
+    setSnippets(newSnippets);
+  }, [inputValues, credentials, baseUrl]);
+
+  const handleInputChange = (name, value) => {
+    setInputValues((prevState) => ({
+      params: {
+        ...prevState.params,
+        [name]: value,
+      },
+    }));
+  };
+
+  if (!categoryData) {
+    return <h2>No data available for this category</h2>;
   }
 
   return (
-    <main>
-      <Helmet>
-        <title>{currentApiDetails.title} - API Details</title>
-        <meta name="description" content={currentApiDetails.description} />
-        <meta
-          property="og:title"
-          content={currentApiDetails.title + " - API Details"}
-        />
-        <meta
-          property="og:description"
-          content={currentApiDetails.description}
-        />
-      </Helmet>
-      <Row gutter={[16, 16]}>
-        <Col xs={24} sm={24} md={14} lg={14}>
-          <section aria-labelledby="api-title">
-            <h1 id="api-title" className="api-details-title">
-              {currentApiDetails.title}
-            </h1>
-            <div className="base-url-container">
-              <span className="method-tag">{currentApiDetails.method}</span>
-              <span>{`${currentApiDetails.baseUrl}/${currentApiDetails.endpoint}`}</span>
-            </div>
-            <p className="api-details-description">
-              {currentApiDetails.description}
-            </p>
-            <div className="call-rate-tag">{currentApiDetails.callRate}</div>
-            {currentApiDetails.fields?.map((field) => (
-              <div key={field.name} className="input-field-container">
-                <label htmlFor={field.name} className="input-field-label">
-                  {field.name} {field.required && "(required)"}
-                </label>
-                <Input
-                  id={field.name}
-                  size="large"
-                  className="input-field"
-                  placeholder={field.placeholder}
+    console.log(inputValues),
+    (
+      <div className="apiDetailsContainer">
+        <Row gutter={16}>
+          <Col className="categoryDetailsWrapper" xs={24} md={14} xxl={16}>
+            <div className="categoryTitleContainer">
+              <div className="category-title-icon">
+                <EnvironmentOutlined
+                  style={{ fontSize: "22px", color: "#52c41a" }}
                 />
+                <h1>{categoryData.title}</h1>
               </div>
-            ))}
-            <div className="response-section">
-              <span className="response-message">
-                {texts.apiDetails.responseText}
-              </span>
-              <Select defaultValue="204" className="response-select">
-                <Option value="204">
-                  <span className="response-dot" />
-                  {texts.apiDetails.response}
-                </Option>
-              </Select>
+              <div className="titleBorder"></div>
             </div>
-          </section>
-        </Col>
-        <Col xs={24} sm={24} md={10} lg={10}>
-          <AuthorizationBlock />
-        </Col>
-      </Row>
-    </main>
+
+            <div className="categoryInstructions">
+              <h4>Instructions</h4>
+              <p>{categoryData.ins}</p>
+            </div>
+
+            <Card className="categoryFormWrapper">
+              {categoryData.texts.map((text) => (
+                <div key={text.name} className="formItem">
+                  <div className="formTextLabel">
+                    <label>{text.title}</label>
+                    {text.desc && (
+                      <p className="inputDescription">{text.desc}</p>
+                    )}
+                  </div>
+                  <div>
+                    <CustomInput
+                      value={inputValues.params[text.name] || ""}
+                      onChange={(e) =>
+                        handleInputChange(text.name, e.target.value)
+                      }
+                    />
+                  </div>
+                </div>
+              ))}
+            </Card>
+          </Col>
+          <Col xs={24} md={10} xxl={8}>
+            <AuthorizationBlock
+              snippets={snippets}
+              inputValues={inputValues}
+              updateCredentials={updateCredentials}
+            />
+          </Col>
+        </Row>
+      </div>
+    )
   );
 };
 

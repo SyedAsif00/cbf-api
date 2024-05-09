@@ -1,56 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { Input } from "antd";
+import React, { useState } from "react";
 import { CopyOutlined } from "@ant-design/icons";
-import { mockCodeSnippets } from "../../mockData/mockData";
-import CustomTabs from "../common/customTabs/CustomTab";
+import CustomTabs from "../../components/common/customTabs/CustomTab";
 import "./index.css";
-import TickButton from "../other/TickButton";
 import { copyToClipboard } from "../../js-helper/copy";
-import texts from "../../mockData/texts";
-const LanguageCodeBlock = ({ currentApiDetails }) => {
-  const [activeLanguage, setActiveLanguage] = useState("Python");
-  const [codeSnippet, setCodeSnippet] = useState("");
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-  useEffect(() => {
-    if (mockCodeSnippets[activeLanguage]) {
-      setCodeSnippet(mockCodeSnippets[activeLanguage](currentApiDetails));
-    }
-  }, [activeLanguage, currentApiDetails]);
+const LanguageSelector = ({ snippets, inputValues }) => {
+  const [activeLanguage, setActiveLanguage] = useState("python");
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
-  const tabList = [
-    { title: "Python", key: "Python" },
-    { title: "JavaScript (Node.js)", key: "JavaScript" },
-    { title: "Ruby", key: "Ruby" },
-    { title: "PHP", key: "PHP" },
-  ];
+  const tabsData = Object.keys(snippets).map((lang) => ({
+    key: lang,
+    label: capitalizeFirstLetter(lang),
+    content: (
+      <div className="code-block-container">
+        <SyntaxHighlighter
+          language={lang}
+          style={style}
+          className="code-block-content"
+        >
+          {snippets[lang].replace(
+            /\$\{([^}]+)\}/g,
+            (_, match) => inputValues[match] || ""
+          )}
+        </SyntaxHighlighter>
+        <CopyOutlined
+          className="copy-icon"
+          onClick={() =>
+            copyToClipboard(
+              snippets[activeLanguage] ?? "",
+              "Code has been copied!"
+            )
+          }
+        />
+      </div>
+    ),
+  }));
 
   return (
-    <div className="code-block-container">
+    <div>
       <CustomTabs
-        activeKey={activeLanguage}
-        onTabChange={setActiveLanguage}
-        tabList={tabList}
-      />
-      <div className="code-block-header">
-        <div className="header-title-and-button">
-          <span>{texts.languageSelector.apiRequestText}</span>
-          <TickButton
-            tickColor="green"
-            icon={<CopyOutlined style={{ color: "darkgrey" }} />}
-            onClick={() => {
-              copyToClipboard(codeSnippet, "Code has been copied!");
-            }}
-          />
-        </div>
-      </div>
-      <Input.TextArea
-        className="code-block-content"
-        value={codeSnippet}
-        rows={10}
-        readOnly
+        activeKey="python"
+        onChange={(key) => setActiveLanguage(key.toLowerCase())}
+        tabsData={tabsData}
       />
     </div>
   );
 };
 
-export default LanguageCodeBlock;
+export default LanguageSelector;

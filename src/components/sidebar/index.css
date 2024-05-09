@@ -2,6 +2,8 @@
   width: 300px;
   border-right: 1px solid #dfe1e6;
   padding: 10px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 @media (max-width: 768px) {
   .container {
@@ -27,20 +29,19 @@
   padding: 10px 15px;
   margin-bottom: 5px;
   text-decoration: none;
-  color: #3a9012;
+  color: rgba(0, 0, 0, 0.88);
   background-color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
-
+.sidebar-item.active .link {
+  background-color: #c2ccc0;
+  color: #228b22;
+  border-radius: 5px;
+  font-weight: bold;
+}
 .link:hover {
   background-color: #eaeced;
-  color: #000000;
-}
-
-.sidebar-item .link.activeLink {
-  border-radius: 5px;
-  background-color: #8fb482;
-  color: #ffffff;
+  color: #057764;
 }
 
 .searchInput {

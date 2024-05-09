@@ -1,101 +1,83 @@
-/* api-details.css */
-.api-details-container {
-  width: 48vw;
-
-  padding: 20px;
+.categoryDetailsWrapper {
+  border: 1px dotted #d9d9d9;
   border-radius: 8px;
-  margin: 20px auto; /* Center the container */
-}
-@media (max-width: 768px) {
-  .api-details-container {
-    width: 100%;
-  }
-}
-.api-details-title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #000; /* Assuming dark text for light backgrouand */
-}
-
-.base-url-container {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center; /* Align items vertically */
-}
-
-.method-tag {
-  font-size: 14px;
-  font-weight: 700;
-  color: #17a2b8; /* Match with your design color scheme */
-  margin-right: 10px;
-}
-
-.api-details-description {
-  font-size: 15px;
-  margin-bottom: 20px;
-  color: #333; /* Darker text for readability */
-}
-
-.call-rate-tag {
-  display: inline-block; /* Only as wide as its content */
-  font-size: 14px;
-  padding: 5px 10px;
-  background-color: #ffc107;
-  border-radius: 4px;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.input-field-container {
+  padding: 20px;
   margin-top: 20px;
-  margin-bottom: 10px;
-  position: relative; /* For absolute positioning of the label */
 }
 
-.input-field-label {
-  position: absolute;
-  top: -10px;
-  left: 10px;
-  background: #ffffff;
-  padding: 0 4px;
-  color: #ff4d4f; /* Red color for the required field indicator */
-  font-size: 14px;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #d9d9d9;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.submit-button:hover {
-  background-color: #218838;
-}
-
-.response-section {
+.categoryTitleContainer {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #e8e8e8;
-  padding-top: 20px;
+  margin-bottom: 10px;
+}
+.category-title-icon {
+  display: flex;
+  align-items: center;
+}
+
+.titleBorder {
+  background-color: #ebe8e8;
+  width: 99%;
+  height: 1px;
   margin-top: 20px;
-  align-items: start; /* Align items to the start of the flex container */
+  margin-left: 4px;
+}
+.apiDetailsContainer {
+  margin: 20px;
 }
 
-.response-select {
-  width: 100%; /* Make select full-width */
-  margin-top: 8px; /* Add some space above the select */
+.categoryDetailsWrapper {
+  padding: 20px;
 }
 
-.response-dot {
-  height: 10px;
-  width: 10px;
-  background-color: #52c41a; /* Green color */
-  border-radius: 50%; /* Makes it a circle */
-  display: inline-block;
-  margin-right: 5px; /* Space between the dot and the text */
+.category-title-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleBorder {
+  height: 2px;
+  background-color: #e8e8e8;
+  margin-bottom: 10px;
+}
+
+.categoryInstructions h4 {
+  margin-bottom: 5px;
+}
+
+.categoryFormWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #f1f1f1;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.formItemTextLabel {
+  display: flex;
+  flex-direction: column;
+}
+.formTextLabel {
+  width: 70%;
+}
+.formItem label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inputDescription {
+  margin-top: 15px;
+  color: #666;
+}
+
+.categoryFormInputs {
+  margin-bottom: 10px;
 }

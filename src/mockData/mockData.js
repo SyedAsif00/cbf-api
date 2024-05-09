@@ -9,82 +9,84 @@ export const headerContent = {
   helpCenterText: "Help center",
 };
 
-export const mockCodeSnippets = {
-  Python: (details) => `import requests
-url = "${details.baseUrl}/${details.endpoint}"
-payload = {}  # Your payload here
-headers = {
-  "Accept": "application/json",
-  "Content-Type": "application/json",
-  "Authorization": "Basic YOUR_API_KEY"
-}
+export const DummyUrl = "xyz.com/";
 
-response = requests.request("GET", url, headers=headers, data=payload)
-print(response.text)`,
+// export const mockCodeSnippets = {
+//   Python: (details) => `import requests
+// url = "${details.baseUrl}/${details.endpoint}"
+// payload = {}  # Your payload here
+// headers = {
+//   "Accept": "application/json",
+//   "Content-Type": "application/json",
+//   "Authorization": "Basic YOUR_API_KEY"
+// }
 
-  JavaScript: (details) => `fetch("${details.baseUrl}/${details.endpoint}", {
-  method: "GET", // or 'POST'
-  headers: {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-    "Authorization": "Basic YOUR_API_KEY"
-  },
-  body: JSON.stringify({}) // Your payload here
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch((error) => console.error('Error:', error))`,
+// response = requests.request("GET", url, headers=headers, data=payload)
+// print(response.text)`,
 
-  Ruby: (details) => `require 'uri'
-require 'net/http'
-require 'openssl'
+//   JavaScript: (details) => `fetch("${details.baseUrl}/${details.endpoint}", {
+//   method: "GET", // or 'POST'
+//   headers: {
+//     "Accept": "application/json",
+//     "Content-Type": "application/json",
+//     "Authorization": "Basic YOUR_API_KEY"
+//   },
+//   body: JSON.stringify({}) // Your payload here
+// })
+// .then(response => response.json())
+// .then(data => console.log(data))
+// .catch((error) => console.error('Error:', error))`,
 
-url = URI("${details.baseUrl}/${details.endpoint}")
+//   Ruby: (details) => `require 'uri'
+// require 'net/http'
+// require 'openssl'
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+// url = URI("${details.baseUrl}/${details.endpoint}")
 
-request = Net::HTTP::Get.new(url)
-request["Accept"] = 'application/json'
-request["Content-Type"] = 'application/json'
-request["Authorization"] = 'Basic YOUR_API_KEY'
-request.body = "{}" # Your payload here
+// http = Net::HTTP.new(url.host, url.port)
+// http.use_ssl = true
+// http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-response = http.request(request)
-puts response.read_body`,
+// request = Net::HTTP::Get.new(url)
+// request["Accept"] = 'application/json'
+// request["Content-Type"] = 'application/json'
+// request["Authorization"] = 'Basic YOUR_API_KEY'
+// request.body = "{}" # Your payload here
 
-  PHP: (details) => `<?php
-$curl = curl_init();
+// response = http.request(request)
+// puts response.read_body`,
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "${details.baseUrl}/${details.endpoint}",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_POSTFIELDS => "{}", // Your payload here
-  CURLOPT_HTTPHEADER => array(
-    "Accept: application/json",
-    "Content-Type: application/json",
-    "Authorization: Basic YOUR_API_KEY"
-  ),
-));
+//   PHP: (details) => `<?php
+// $curl = curl_init();
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "${details.baseUrl}/${details.endpoint}",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => "GET",
+//   CURLOPT_POSTFIELDS => "{}", // Your payload here
+//   CURLOPT_HTTPHEADER => array(
+//     "Accept: application/json",
+//     "Content-Type: application/json",
+//     "Authorization: Basic YOUR_API_KEY"
+//   ),
+// ));
 
-curl_close($curl);
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-}
-?>`,
-};
+// curl_close($curl);
+
+// if ($err) {
+//   echo "cURL Error #:" . $err;
+// } else {
+//   echo $response;
+// }
+// ?>`,
+// };
 
 export const apiData = [
   {

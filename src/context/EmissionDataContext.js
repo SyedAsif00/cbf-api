@@ -1,5 +1,3 @@
-// EmissionDataContext.js
-
 import React, { createContext, useContext, useState } from "react";
 import emissionData from "../emissionData/emissionData.json"; // Ensure this import path is correct
 

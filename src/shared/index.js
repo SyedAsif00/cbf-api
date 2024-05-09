@@ -10,6 +10,7 @@ import UserProfile from "../components/userProfile";
 import { ApiDataProvider } from "../context/ApiDataContext";
 import { AuthProvider } from "../context/AuthContext";
 import ContactUs from "../components/contactUs";
+import Loader from "../../src/components/common/antdSpin";
 export {
   Header,
   Sidebar,
@@ -23,4 +24,5 @@ export {
   ApiDataProvider,
   AuthProvider,
   ContactUs,
+  Loader,
 };

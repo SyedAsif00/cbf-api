@@ -1,98 +1,93 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useApiData } from "../../context/ApiDataContext";
+import { useEmissionData } from "../../context/EmissionDataContext";
 import { Input } from "antd";
 import "./index.css";
 import { CloseOutlined } from "@ant-design/icons";
+import { CustomInput } from "../common/formInputs/formInput";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
-  const { apis, setApiDetails, selectedApiEndpoint } = useApiData();
-  const navigate = useNavigate();
   const location = useLocation();
-
+  const { data: emissionData } = useEmissionData();
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value.toLowerCase());
   };
 
-  useLayoutEffect(() => {
-    const currentPath = window.location.pathname;
-    const apiEndpoint = currentPath.split("/api/")[1];
-    if (apiEndpoint) {
-      setApiDetails(apiEndpoint);
-    }
-  }, []);
-
-  const handleApiClick = (endpoint) => {
-    setApiDetails(endpoint);
-    navigate(`/dashboard/api/${endpoint}`);
+  const handleEmissionClick = (name) => {
+    navigate(`/form?name=${name}`);
+    setIsOpen(false);
   };
 
-  const isActive = (endpoint) => location.pathname.endsWith(endpoint);
-
-  const filteredApis = apis.filter(
-    (api) =>
-      api.title.toLowerCase().includes(search) ||
-      api.endpoint.toLowerCase().includes(search)
+  const filteredEmissions = Object.keys(emissionData).filter((key) =>
+    emissionData[key].title.toLowerCase().includes(search)
   );
 
-  if (isOpen)
+  // Check if the current key is the active key based on URL search params
+  const isActive = (key) =>
+    new URLSearchParams(location.search).get("name") === key;
+
+  if (isOpen) {
     return (
-      <div
-        tabIndex="-1"
-        className={`drawer ${isOpen && "animate"} ${!isOpen && "hidden"} left`}
-      >
+      <div className={`drawer ${isOpen && "animate"} left`}>
         <div
           onClick={() => setIsOpen(false)}
           style={{ position: "absolute", right: 20 }}
         >
           <CloseOutlined />
         </div>
-        <ul style={{ listStyle: "none", marginTop: 30 }} className="list">
-          {filteredApis.map((api) => (
+        <CustomInput
+          placeholder="Search..."
+          size="small"
+          type="text"
+          className="searchInput"
+          value={search}
+          onChange={handleSearchChange}
+          style={{ margin: "10px" }}
+        />
+        <ul style={{ listStyle: "none", marginTop: 20 }} className="list">
+          {filteredEmissions.map((key) => (
             <li
-              key={api.endpoint}
-              className={`sidebar-item ${
-                isActive(api.endpoint) ? "activeLink" : ""
-              }`}
-              onClick={() => handleApiClick(api.endpoint)}
+              key={key}
+              className={`sidebar-item ${isActive(key) ? "active" : ""}`}
             >
               <Link
-                to={`/api/${api.endpoint}`}
-                className={`link ${isActive(api.endpoint) ? "activeLink" : ""}`}
+                to={`/form?name=${key}`}
+                className="link"
+                onClick={() => handleEmissionClick(key)}
               >
-                {api.title}
+                {emissionData[key].title}
               </Link>
             </li>
           ))}
         </ul>
       </div>
     );
+  }
 
   return (
     <aside className={`container`}>
-      <Input
+      <CustomInput
         placeholder="jump to..."
         size="small"
         type="text"
-        className="searchInput"
+        // className="searchInput"
         onChange={handleSearchChange}
       />
-      <ul style={{ listStyle: "none" }} className="list">
-        {filteredApis.map((api) => (
+      <ul style={{ listStyle: "none", marginTop: 20 }} className="list">
+        {filteredEmissions.map((key) => (
           <li
-            key={api.endpoint}
-            className={`sidebar-item ${
-              isActive(api.endpoint) ? "activeLink" : ""
-            }`}
-            onClick={() => handleApiClick(api.endpoint)}
+            key={key}
+            className={`sidebar-item ${isActive(key) ? "active" : ""}`}
           >
             <Link
-              to={`/api/${api.endpoint}`}
-              className={`link ${isActive(api.endpoint) ? "activeLink" : ""}`}
+              to={`/form?name=${key}`}
+              className="link"
+              onClick={() => handleEmissionClick(key)}
             >
-              {api.title}
+              {emissionData[key].title}
             </Link>
           </li>
         ))}

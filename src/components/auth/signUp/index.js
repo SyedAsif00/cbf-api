@@ -84,7 +84,7 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Button className="loginBtn" type="submit" onClick={handleSubmit}>
-                {loading ? `${texts.signup.signupBtnTxt}ing` : "Registering"}
+                {loading ? `${texts.signup.signupBtnTxt}ing` : "Register"}
               </Button>
             </form>
           </section>

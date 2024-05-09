@@ -1,38 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-
 import {
   CommonLayout,
-  ApiDetails,
   UserProfile,
   LoginForm,
   SignUpForm,
-  ApiDataProvider,
   AuthProvider,
   ContactUs,
+  Loader,
+  ApiDetails, // Ensure Spinner is imported
 } from "./shared";
+import { EmissionDataProvider } from "./context/EmissionDataContext";
 import "./App.css";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <Router>
       <AuthProvider>
-        {" "}
-        <ApiDataProvider>
+        <EmissionDataProvider>
+          {isLoading && <Loader />}
+
           <Routes>
-            <Route path="/" element={<Navigate replace to="/dashboard" />} />
+            <Route
+              path="/"
+              element={<Navigate replace to="/form?name=fuel" />}
+            />
             <Route
               path="/dashboard"
-              element={
-                <CommonLayout>
-                  <ApiDetails />
-                </CommonLayout>
-              }
+              element={<Navigate replace to="/form?name=fuel" />}
             />
             <Route
               path="/profile"
@@ -43,7 +49,7 @@ const App = () => {
               }
             />
             <Route
-              path="/dashboard/api/:endpoint"
+              path="/form"
               element={
                 <CommonLayout>
                   <ApiDetails />
@@ -52,7 +58,6 @@ const App = () => {
             />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<SignUpForm />} />
-
             <Route
               path="/contactus"
               element={
@@ -61,9 +66,8 @@ const App = () => {
                 </CommonLayout>
               }
             />
-            {/* <Route path="/contactus" element={<ContactUs />} /> */}
           </Routes>
-        </ApiDataProvider>
+        </EmissionDataProvider>
       </AuthProvider>
     </Router>
   );
