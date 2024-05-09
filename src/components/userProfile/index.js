@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Tabs, Input, Button } from "antd";
+import { Row, Col, Button, Input } from "antd";
 import { useAuth } from "../../context/AuthContext";
 import Loader from "../../components/common/antdSpin";
 import { useResponsive } from "../../customHooks/responsive";
 import "./index.css";
 import { Helmet } from "react-helmet";
 import texts from "../../mockData/texts";
-const { TabPane } = Tabs;
+import { CustomInput } from "../common/formInputs/formInput";
+import CustomTabs from "../common/customTabs/CustomTab";
 
 const UserProfile = () => {
   const { user } = useAuth();
@@ -37,6 +38,89 @@ const UserProfile = () => {
     return <Loader />;
   }
 
+  const tabsData = [
+    {
+      key: "user",
+      label: "User",
+      content: (
+        <section>
+          <div className="profile-input">
+            <div style={{ paddingBottom: "20px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h4 id="responsive">{texts.profile.userName.nameTitle}</h4>
+                <CustomInput
+                  type="text"
+                  name="firstName"
+                  value={firstName}
+                  onChange={onInputChange}
+                />
+              </div>
+              <p>{texts.profile.userName.exampleName}</p>
+            </div>
+            <div label="Email">
+              <div
+                className="email"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <h4 id="responsive">{texts.profile.userEmail.emailTitle}</h4>
+                <CustomInput
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={onInputChange}
+                  style={{ width: "400px" }}
+                />
+              </div>
+              <p>{texts.profile.userEmail.exampleEmail}</p>
+            </div>
+          </div>
+          <footer>
+            <Button
+              style={{ marginTop: "20px" }}
+              type="primary"
+              disabled={!isFormEdited}
+            >
+              {texts.profile.updateBtnTxt}
+            </Button>
+          </footer>
+        </section>
+      ),
+    },
+    {
+      key: "password",
+      label: "Password",
+      content: (
+        <section>
+          <div className="password-input">
+            <div style={{ paddingBottom: "20px" }}>
+              <h4 id="responsive">{texts.profile.newPassword}</h4>
+              <Input.Password style={{ width: "400px" }} />
+            </div>
+            <div label="Confirm New Password">
+              <h4 id="responsive">{texts.profile.confirmNewPassword}</h4>
+              <Input.Password style={{ width: "400px" }} />
+            </div>
+          </div>
+          <footer>
+            <Button style={{ marginTop: "20px" }} type="primary">
+              {texts.profile.updateBtnTxt}
+            </Button>
+          </footer>
+        </section>
+      ),
+    },
+  ];
+
   return (
     <article className="profileMainContainer">
       <Helmet>
@@ -49,76 +133,15 @@ const UserProfile = () => {
         />
       </Helmet>
       <Row>
-        <Col xs={24} md={24}>
+        <Col xs={24} md={18}>
           <header>
-            {" "}
-            {/* // Using header tag for headings */}
             <h1 className="profile-title">{texts.profile.profileTitle}</h1>
           </header>
-          <Tabs defaultActiveKey="user" onChange={(key) => setActiveTab(key)}>
-            <TabPane tab="User" key="user">
-              <section>
-                {" "}
-                {/* // Using section for each tab pane content */}
-                <div className="profile-input">
-                  <div style={{ paddingBottom: "20px" }}>
-                    <div style={{ display: "flex" }}>
-                      <h4 id="responsive">
-                        {texts.profile.userName.nameTitle}
-                      </h4>
-                      <Input
-                        type="text"
-                        name="firstName"
-                        value={firstName}
-                        onChange={onInputChange}
-                        style={{ width: "400px" }}
-                      />
-                    </div>
-                    <p>{texts.profile.userName.exampleName}</p>
-                  </div>
-                  <div label="Email">
-                    <div className="email" style={{ display: "flex" }}>
-                      <h4 id="responsive">
-                        {texts.profile.userEmail.emailTitle}
-                      </h4>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={onInputChange}
-                        style={{ width: "400px" }}
-                      />
-                    </div>
-                    <p>{texts.profile.userEmail.exampleEmail}</p>
-                  </div>
-                </div>
-                <footer>
-                  {" "}
-                  {/* Using footer for form actions */}
-                  <Button type="primary" disabled={!isFormEdited}>
-                    {texts.profile.updateBtnTxt}
-                  </Button>
-                </footer>
-              </section>
-            </TabPane>
-            <TabPane tab="Password" key="password">
-              <section>
-                <div className="password-input">
-                  <div style={{ paddingBottom: "20px" }}>
-                    <h4 id="responsive">{texts.profile.newPassword}</h4>
-                    <Input.Password style={{ width: "400px" }} />
-                  </div>
-                  <div label="Confirm New Password">
-                    <h4 id="responsive">{texts.profile.confirmNewPassword}</h4>
-                    <Input.Password style={{ width: "400px" }} />
-                  </div>
-                </div>
-                <footer>
-                  <Button type="primary">{texts.profile.updateBtnTxt}</Button>
-                </footer>
-              </section>
-            </TabPane>
-          </Tabs>
+          <CustomTabs
+            activeKey={activeTab}
+            onChange={setActiveTab}
+            tabsData={tabsData}
+          />
         </Col>
       </Row>
     </article>
