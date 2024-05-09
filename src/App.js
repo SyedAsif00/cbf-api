@@ -13,7 +13,7 @@ import {
   AuthProvider,
   ContactUs,
   Loader,
-  ApiDetails, // Ensure Spinner is imported
+  ApiDetails,
 } from "./shared";
 import { EmissionDataProvider } from "./context/EmissionDataContext";
 import "./App.css";

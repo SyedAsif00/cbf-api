@@ -3,13 +3,20 @@ import { Input } from "antd";
 import { isAuthenticated } from "../../../helpers/authHelper";
 const { Group } = Input;
 
-export const UserAuthInputs = () => {
+export const UserAuthInputs = ({ updateCredentials }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleAuthentication = () => {
-    const authenticated = isAuthenticated(username, password);
-    console.log(authenticated);
+  const handleUsernameChange = (e) => {
+    const newUsername = e.target.value;
+    setUsername(newUsername);
+    updateCredentials(newUsername, password);
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    updateCredentials(username, newPassword);
   };
 
   return (
@@ -18,15 +25,13 @@ export const UserAuthInputs = () => {
         addonBefore="Basic"
         value={username}
         placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-        onBlur={handleAuthentication}
+        onChange={handleUsernameChange}
         style={{ width: "calc(50% - 2px)", borderRight: "none" }}
       />
       <Input.Password
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        onBlur={handleAuthentication}
+        onChange={handlePasswordChange}
         style={{ width: "calc(50% - 2px)" }}
       />
     </Group>

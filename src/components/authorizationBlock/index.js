@@ -23,6 +23,7 @@ const AuthorizationBlock = ({ snippets, inputValues, updateCredentials }) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const name = query.get("name");
+
   return (
     console.log(emissionData.title),
     (
@@ -37,6 +38,7 @@ const AuthorizationBlock = ({ snippets, inputValues, updateCredentials }) => {
             {texts.AuthorizationBlock.AuthorizationText}
           </p>
           <UserAuthInputs updateCredentials={updateCredentials} />
+
           {!user && (
             <Typography>
               <Text style={{ fontSize: "13px" }}>
@@ -61,8 +63,6 @@ const AuthorizationBlock = ({ snippets, inputValues, updateCredentials }) => {
           inputValues={inputValues}
           snippets={snippets}
           emissionData={emissionData}
-          // language={activeLanguage}
-          // currentApiDetails={currentApiDetails}
         />
       </section>
     )

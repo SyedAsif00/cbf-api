@@ -1,5 +1,7 @@
 .code-block-container {
   position: relative;
+  font-size: 11px; /* default size for large screens */
+  height: 100%;
 }
 
 .copy-icon {
