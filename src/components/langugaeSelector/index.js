@@ -24,7 +24,7 @@ const LanguageSelector = ({ snippets, inputValues }) => {
         >
           {snippets[lang].replace(
             /\$\{([^}]+)\}/g,
-            (_, match) => inputValues[match] || ""
+            (_, match) => inputValues.params[match] || ""
           )}
         </SyntaxHighlighter>
         <CopyOutlined

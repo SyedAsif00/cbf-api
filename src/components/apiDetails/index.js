@@ -42,12 +42,15 @@ const ApiDetails = () => {
   }, [inputValues, credentials, baseUrl]);
 
   const handleInputChange = (name, value) => {
-    setInputValues((prevState) => ({
-      params: {
-        ...prevState.params,
-        [name]: value,
-      },
-    }));
+    setInputValues((prevState) => {
+      let params = { ...prevState.params };
+      if (value === "") {
+        delete params[name]; // Remove the key if the value is empty
+      } else {
+        params[name] = value; // Otherwise, update the key with the new value
+      }
+      return { params };
+    });
   };
 
   if (!categoryData) {
@@ -75,7 +78,10 @@ const ApiDetails = () => {
               <p>{categoryData.ins}</p>
             </div>
 
-            <Card className="categoryFormWrapper">
+            <Card
+              className="categoryFormWrapper"
+              style={{ overflowY: "auto", height: "80vh" }}
+            >
               {categoryData.texts.map((text) => (
                 <div key={text.name} className="formItem">
                   <div className="formTextLabel">
