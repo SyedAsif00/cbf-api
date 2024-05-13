@@ -23,7 +23,7 @@ const CommonLayout = ({ children }) => {
         <div
           className="main-content"
           style={{
-            padding: "10px 20px",
+            padding: isMobile ? "" : "10px 20px",
             width: "100vw",
           }}
         >
