@@ -9,8 +9,6 @@ import { CustomInput } from "../common/formInputs/formInput";
 import { DummyUrl } from "../../mockData/mockData";
 import "./index.css";
 
-const { Option } = Select;
-
 const ApiDetails = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -68,14 +66,14 @@ const ApiDetails = () => {
                 <EnvironmentOutlined
                   style={{ fontSize: "22px", color: "#52c41a" }}
                 />
-                <h1>{categoryData.title}</h1>
+                <h1 className="categoryTitle">{categoryData.title}</h1>
               </div>
               <div className="titleBorder"></div>
             </div>
 
             <div className="categoryInstructions">
               <h4>Instructions</h4>
-              <p>{categoryData.ins}</p>
+              <p className="inputDescription">{categoryData.ins}</p>
             </div>
 
             <Card
@@ -85,7 +83,7 @@ const ApiDetails = () => {
               {categoryData.texts.map((text) => (
                 <div key={text.name} className="formItem">
                   <div className="formTextLabel">
-                    <label>{text.title}</label>
+                    <label className="categoryInputLabel">{text.title}</label>
                     <CustomInput
                       value={inputValues.params[text.name] || ""}
                       onChange={(e) =>

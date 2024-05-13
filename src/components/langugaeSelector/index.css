@@ -1,7 +1,13 @@
 .code-block-container {
   position: relative;
-  font-size: 11px; /* default size for large screens */
+  font-size: 11px;
   height: 100%;
+  font-size: 12px;
+}
+@media (max-width: 768px) {
+  .code-block-container {
+    font-size: 10px;
+  }
 }
 
 .copy-icon {

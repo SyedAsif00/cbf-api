@@ -45,6 +45,11 @@
 .categoryInstructions h4 {
   margin-bottom: 5px;
 }
+/*  */
+.categoryInstruction-Description {
+  color: gray;
+  font-size: 12px;
+}
 
 .categoryFormWrapper {
   margin-top: 20px;
@@ -58,6 +63,11 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
 }
+.inputDescription {
+  margin-top: 15px;
+  color: gray;
+  font-size: 13px;
+}
 
 .formTextLabel {
   display: flex;
@@ -69,10 +79,23 @@
   font-weight: bold;
   margin-bottom: 5px;
 }
-
-.inputDescription {
-  margin-top: 15px;
-  color: #666;
+.categoryTitle {
+  font-size: 24px;
+}
+.categoryInputLabel {
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .categoryTitle {
+    font-size: 22px;
+  }
+  .categoryInputLabel {
+    font-size: 12px;
+  }
+  .inputDescription {
+    margin-top: 5px;
+    font-size: 12px;
+  }
 }
 
 .categoryFormInputs {
