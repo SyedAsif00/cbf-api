@@ -45,7 +45,14 @@ export function copyToClipboard(text, onCopyText) {
     });
 }
 export const generateCodeSnippets = (baseUrl, params, credentials) => {
-  const allParams = { ...params, ...credentials };
+  // Separate credentials into a specific object within the payload if needed
+  const payload = {
+    credentials: {
+      username: credentials.username,
+      password: credentials.password,
+    },
+    params,
+  };
 
   return {
     javascript: `
@@ -54,7 +61,13 @@ fetch('${baseUrl}', {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify(${JSON.stringify(allParams)})
+  body: JSON.stringify({
+    credentials: {
+      username: '${credentials.username}',
+      password: '${credentials.password}'
+    },
+    ...${JSON.stringify(params)}
+  })
 })
 .then(response => response.json())
 .then(data => console.log(data))
@@ -62,13 +75,25 @@ fetch('${baseUrl}', {
 `,
     python: `
 import requests
-response = requests.post('${baseUrl}', json=${JSON.stringify(allParams)})
+response = requests.post('${baseUrl}', json={
+  'credentials': {
+    'username': '${credentials.username}',
+    'password': '${credentials.password}'
+  },
+  **${JSON.stringify(params)}
+})
 print(response.text)
 `,
     curl: `
 curl -X POST ${baseUrl} \\
   -H "Content-Type: application/json" \\
-  -d '${JSON.stringify(allParams)}'
+  -d '{
+    "credentials": {
+      "username": "${credentials.username}",
+      "password": "${credentials.password}"
+    },
+    ${JSON.stringify(params).slice(1, -1)}
+  }'
 `,
   };
 };
