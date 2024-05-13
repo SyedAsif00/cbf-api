@@ -5,7 +5,7 @@ import texts from "../../mockData/texts";
 import "./index.css";
 import { useResponsive } from "../../customHooks/responsive";
 import { addContactMessage } from "../../firebase/contactMessage.firebase";
-
+import { CustomInput } from "../common/formInputs/formInput";
 const ContactUs = () => {
   const { isMobile } = useResponsive();
   const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ const ContactUs = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       message.error("Please fill all fields");
       return;
@@ -33,7 +33,7 @@ const ContactUs = () => {
       );
       if (result) {
         message.success("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setFormData({ name: "", email: "", message: "" });
       } else {
         message.error("Failed to send message");
       }
@@ -81,7 +81,10 @@ const ContactUs = () => {
                 {contactInputs.map((inpt, index) => (
                   <div>
                     <label className="inputLabels">{inpt.label}</label>
-                    <Input className="input" placeholder={inpt.placeholder} />
+                    <CustomInput
+                      className="input"
+                      placeholder={inpt.placeholder}
+                    />
                   </div>
                 ))}
               </div>
